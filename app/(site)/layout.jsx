@@ -1,7 +1,33 @@
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const hubotSansCondensed = localFont({
+  src: [
+    {
+      path: "../../public/fonts/HubotSansCondensed-Light.woff2",
+      weight: "300",
+      style: "normal"
+    },
+    {
+      path: "../../public/fonts/HubotSansCondensed-Medium.woff2",
+      weigh: "500",
+      style: "normal"
+    },
+    {
+      path: "../../public/fonts/HubotSansCondensed-SemiBold.woff2",
+      weigh: "600",
+      style: "normal"
+    },
+    {
+      path: "../../public/fonts/HubotSansCondensed-Bold.woff2",
+      weight: "700",
+      style: "normal"
+    },
+  ],
+  variable: "--font-hubot-sans-condensed",
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +37,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${hubotSansCondensed.className}`}>{children}</body>
     </html>
   );
 }

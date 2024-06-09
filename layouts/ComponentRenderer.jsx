@@ -1,11 +1,26 @@
 import React from "react";
+import dynamic from "next/dynamic";
 
-const ComponentRenderer = () => {
+import HomeMasthead from "@/components/mastheads/HomeMasthead";
+
+const ComponentRenderer = ({ components = [] }) => {
+
+    const renderComponent = (layoutName, props) => {
+        const RenderedComponent = {
+            homeMasthead: HomeMasthead,
+        }[layoutName];
+
+        return RenderedComponent ? <RenderedComponent key={`${props.key}`} {...props} /> : null;
+    }
+
     return (
-        <div>
-            <h1>Component Renderer</h1>
-            <p>This is a component renderer</p>
-        </div>
+        <>
+            {components?.map((layout, index) => {
+                const layoutName = layout?.component;
+                const key = layout?._key;
+                return renderComponent(layoutName, { ...layout[layoutName], key, index });
+            })}
+        </>
     )
 }
 

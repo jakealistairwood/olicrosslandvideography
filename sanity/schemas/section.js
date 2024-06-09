@@ -8,6 +8,12 @@ export const section = {
     ],
     fields: [
         {
+            name: "sectionTitle",
+            title: "Section Title",
+            type: "string",
+            group: "content",
+        },
+        {
             name: "components",
             title: "Components",
             type: "array",
@@ -24,19 +30,34 @@ export const section = {
                             validation: (Rule) => Rule.required().min(1).max(200).error("Pick a component or remove"),
                             options: {
                                 list: [
+                                    { title: "Choose a component", value: "" },
                                     { title: "Home Masthead", value: "homeMasthead" },
+                                    { title: "Logo Marquee", value: "logoMarquee" },
                                 ]
-                            }   
-                        }
+                            },
+                            initialValue: "",
+                        },
+                        {
+                            name: "homeMasthead",
+                            type: "homeMasthead",
+                            title: "Home Masthead",
+                            hidden: ({ parent }) => parent.component !== "homeMasthead",
+                        },
+                        {
+                            name: "logoMarquee",
+                            type: "logoMarquee",
+                            title: "Logo Marquee",
+                            hidden: ({ parent }) => parent.component !== "logoMarquee",
+                        },
                     ]
-                }
+                },
             ]
         },
         {
-            name: "homeMasthead",
-            type: "homeMasthead",
-            title: "Home Masthead",
-            hidden: ({ parent }) => parent.component !== "homeMasthead",
-        },
+            name: "sectionOptions",
+            type: "sectionOptions",
+            title: "Section Options",
+            group: "settings",
+        }
     ]
 }
