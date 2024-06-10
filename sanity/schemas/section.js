@@ -33,6 +33,7 @@ export const section = {
                                     { title: "Choose a component", value: "" },
                                     { title: "Home Masthead", value: "homeMasthead" },
                                     { title: "Logo Marquee", value: "logoMarquee" },
+                                    { title: "Text Image Marquee", value: "textImageMarquee" },
                                 ]
                             },
                             initialValue: "",
@@ -48,6 +49,12 @@ export const section = {
                             type: "logoMarquee",
                             title: "Logo Marquee",
                             hidden: ({ parent }) => parent.component !== "logoMarquee",
+                        },
+                        {
+                            name: "textImageMarquee",
+                            type: "textImageMarquee",
+                            title: "Text Image Marquee",
+                            hidden: ({ parent }) => parent.component !== "textImageMarquee",
                         },
                     ]
                 },

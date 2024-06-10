@@ -2,11 +2,14 @@ import React, { memo, useRef } from "react";
 import ComponentRenderer from "./ComponentRenderer";
 
 const Section = memo((props) => {
-    const { components = [] } = props;
+    const { components = [], sectionOptions = {} } = props;
+    const { remove_container = false } = sectionOptions;
+
+    console.log(props);
 
     return (
         <section className="">
-            <div className="">
+            <div className={`${!remove_container ? "container" : ""}`}>
                 <ComponentRenderer components={components} />
             </div>
         </section>

@@ -17,7 +17,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        "heading": "['var(--font-hubot-sans-condensed)']"
+        "body": "var(--font-body)",
+        "heading": "var(--font-hubot-sans-condensed)",
+        "mono": "var(--font-commit-mono)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
