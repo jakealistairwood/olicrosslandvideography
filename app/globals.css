@@ -6,14 +6,22 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .pt-rg {
+    padding-top: 110px;
+  }
+
+  .pb-rg {
+    padding-bottom: 110px;
+  }
+
+  .gap-y-rg {
+    row-gap: 6.875rem;
+  }
 }
 
 html, body {
   font-family: var(--font-body);
   color: white;
   background-color: black;
-}
-
-h1 {
-  font-family: var(--font-heading) !important;
 }

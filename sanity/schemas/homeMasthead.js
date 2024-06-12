@@ -1,5 +1,3 @@
-import { defineType } from "sanity";
-
 export const homeMasthead = {
     name: "homeMasthead",
     title: "Home Masthead",
@@ -20,5 +18,16 @@ export const homeMasthead = {
             title: "Image",
             type: "image",
         },
+        {
+            name: "add_logo_marquee",
+            title: "Add Logo Marquee",
+            type: "boolean",
+        },
+        {
+            name: "logoMarquee",
+            type: "logoMarquee",
+            title: "Logo Marquee",
+            hidden: ({ parent }) =>!parent?.add_logo_marquee,
+        }
     ],
 }

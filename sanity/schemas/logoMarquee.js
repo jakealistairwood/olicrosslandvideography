@@ -1,4 +1,6 @@
-export const logoMarquee = {
+import { defineType } from "sanity";
+
+export const logoMarquee = defineType({
     name: "logoMarquee",
     type: "object",
     title: "Logo Marquee",
@@ -41,4 +43,4 @@ export const logoMarquee = {
             ]
         }
     ]
-};
+});

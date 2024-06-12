@@ -5,6 +5,20 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {
+      pattern: /pt-.+/,
+      variants: ["rg"]
+    },
+    {
+      pattern: /pb-.+/,
+      variants: ["rg"]
+    },
+    {
+      pattern: /gap-y-.+/,
+      variants: ["rg"]
+    }
+  ],
   theme: {
     container: {
       center: true,
@@ -28,6 +42,9 @@ module.exports = {
       },
       colors: {
         "accent": "#FD6746",
+        "carbon": "#808080",
+        "graphite": "#1A1919",
+        "ice": "#DEDEDE",
         "white-80": "rgba(255, 255, 255, 0.8)",
       }
     },
