@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className="container flex items-center justify-between">
                 <div className="flex items-center font-mono font-normal gap-x-12">
                     <div className="relative aspect-[105/18] max-w-[105px] w-full">
-                        <Image src="/images/logo.svg" width={105} height={18} objectFit="contain" className="w-full max-w-[108px]" />
+                        <Image src="/images/logo.svg" width={105} height={18} objectFit="contain" className="w-full max-w-[108px] mb-1" />
                     </div>
                     <menu className="flex items-center text-white-80 gap-10 uppercase text-sm">
                         <li>

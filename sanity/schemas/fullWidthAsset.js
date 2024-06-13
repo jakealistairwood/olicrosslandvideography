@@ -7,6 +7,12 @@ export const fullWidthAsset = {
             type: "assetOptions",
             name: "assetOptions",
             title: "Asset Options",
+        },
+        {
+            name: "is_page_divider",
+            title: "Is Page Divider",
+            type: "boolean",
+            initialValue: false,
         }
     ]
 };

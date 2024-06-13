@@ -83,3 +83,13 @@ export const fetchProjectData = async (slug) => {
 
     return await client.fetch(query, params);
 }
+
+export const fetchSiteSettings = async () => {
+    const query = `
+        *[_type == "siteSettings"]{
+            ...,
+        }[0]
+    `
+
+    return await client.fetch(query);
+}

@@ -1,6 +1,8 @@
 import { page } from "./schemas/page"
 import { portfolio } from "./schemas/portfolio"
 import { projectCategories } from "./schemas/projectCategories"
+import { siteSettings } from "./schemas/siteSettings"
+import { contactDetails } from "./schemas/contactDetails"
 import { section } from "./schemas/section"
 import { sectionOptions } from "./schemas/sectionOptions"
 import { assetOptions } from "./schemas/assetOptions"
@@ -18,6 +20,8 @@ export const schema = {
     page,
     portfolio,
     projectCategories,
+    siteSettings,
+    contactDetails,
     section,
     sectionOptions,
     assetOptions,

@@ -1,10 +1,10 @@
 import React from "react";
 import AssetHandler from "../elements/AssetHandler";
 
-const FullWidthAsset = ({ assetOptions }) => {
+const FullWidthAsset = ({ assetOptions, is_page_divider }) => {
 
     return (
-        <div>
+        <div className={`${is_page_divider ? "min-h-[90vh] relative" : ""}`}>
             <AssetHandler {...assetOptions} />
         </div>
     )

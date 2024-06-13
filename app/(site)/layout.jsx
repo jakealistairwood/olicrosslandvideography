@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "../globals.css";
 
 import Navbar from "@/components/globals/Navbar";
+import Footer from "@/components/globals/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const hubotSansCondensed = localFont({
@@ -10,6 +11,11 @@ const hubotSansCondensed = localFont({
     {
       path: "../../public/fonts/HubotSansCondensed-Light.woff2",
       weight: "300",
+      style: "normal"
+    },
+    {
+      path: "../../public/fonts/HubotSansCondensed-Regular.woff2",
+      weight: "400",
       style: "normal"
     },
     {
@@ -58,6 +64,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${hubotSansCondensed.variable} ${commitMono.variable}`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
