@@ -32,6 +32,7 @@ export const section = {
                                 list: [
                                     { title: "Choose a component", value: "" },
                                     { title: "Home Masthead", value: "homeMasthead" },
+                                    { title: "About Masthead", value: "aboutMasthead" },
                                     { title: "Section Header", value: "sectionHeader" },
                                     { title: "Logo Marquee", value: "logoMarquee" },
                                     { title: "Text Image Marquee", value: "textImageMarquee" },
@@ -39,6 +40,7 @@ export const section = {
                                     { title: "Selected Works", value: "selectedWorks" },
                                     { title: "Introduction", value: "introduction" },
                                     { title: "Timed Text Image Slider", value: "timedTextImageSlider" },
+                                    { title: "Job Experiences", value: "jobExperiences" },
                                 ]
                             },
                             initialValue: "",
@@ -48,6 +50,12 @@ export const section = {
                             type: "homeMasthead",
                             title: "Home Masthead",
                             hidden: ({ parent }) => parent.component !== "homeMasthead",
+                        },
+                        {
+                            name: "aboutMasthead",
+                            type: "aboutMasthead",
+                            title: "About Masthead",
+                            hidden: ({ parent }) => parent.component!== "aboutMasthead",
                         },
                         {
                             name: "sectionHeader",
@@ -90,6 +98,12 @@ export const section = {
                             type: "timedTextImageSlider",
                             title: "Timed Text Image Slider",
                             hidden: ({ parent }) => parent.component!== "timedTextImageSlider",
+                        },
+                        {
+                            name: "jobExperiences",
+                            type: "jobExperiences",
+                            title: "Job Experiences",
+                            hidden: ({ parent }) => parent.component!== "jobExperiences",
                         }
                     ]
                 },

@@ -25,3 +25,9 @@ html, body {
   color: white;
   background-color: black;
 }
+
+.prose--dark {
+  p {
+    @apply text-white-80 text-lg font-light leading-[1.6] tracking-[0.01em];
+  }
+}

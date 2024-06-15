@@ -1,11 +1,11 @@
-import { Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import localFont from "next/font/local";
 import "../globals.css";
 
 import Navbar from "@/components/globals/Navbar";
 import Footer from "@/components/globals/Footer";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-body" });
 const hubotSansCondensed = localFont({
   src: [
     {
@@ -61,7 +61,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${hubotSansCondensed.variable} ${commitMono.variable}`}>
+      <body className={`${manrope.variable} ${hubotSansCondensed.variable} ${commitMono.variable}`}>
         <Navbar />
         {children}
         <Footer />

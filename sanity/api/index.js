@@ -93,3 +93,17 @@ export const fetchSiteSettings = async () => {
 
     return await client.fetch(query);
 }
+
+export const fetchContactDetails = async () => {
+    const query = `
+        *[_type == "siteSettings"]{
+            contactDetails{
+                location,
+                mobile_number,
+                email_address
+            }
+        }[0]
+    `
+
+    return await client.fetch(query);
+}

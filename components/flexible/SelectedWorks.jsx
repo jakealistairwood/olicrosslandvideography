@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlForImage } from "@/sanity/lib/image";
 
+import ProjectCard from "../elements/ProjectCard";
+
 const SelectedWorks = ({ projects }) => {
 
     const hasProjects = projects && projects.length > 0;
@@ -13,7 +15,7 @@ const SelectedWorks = ({ projects }) => {
                 i === 0 ? (
                     <FeaturedProject project={project} />
                 ) : (
-                    <ProjectCard project={project} />
+                    <ProjectCard {...project} />
                 )
             ))}
         </div>
@@ -45,20 +47,20 @@ const FeaturedProject = ({ project }) => {
     )
 }
 
-const ProjectCard = ({ project }) => {
-    const { featured_image, category, title, slug } = project;
+// const ProjectCard = ({ project }) => {
+//     const { featured_image, category, title, slug } = project;
 
-    return (
-        <Link className="col-span-6" href={`/portfolio/${slug?.current}` || ""}>
-            <div className="flex flex-col w-full">
-                <div className="aspect-[16/9] relative w-full h-full rounded-lg grayscale">
-                    <Image src={urlForImage(featured_image?.asset)} alt={featured_image?.alt_text || ""} fill className="object-cover h-full w-full rounded-lg" />
-                </div>
-                <div className="flex flex-col mt-6">
-                    <span className="text-accent font-mono text-sm uppercase tracking-[0.24em] font-bold mb-5">{category?.category_name}</span>
-                    <h3 className="font-heading uppercase font-light text-[1.5rem] text-white-80 tracking-[0.18em] leading-tight">{title}</h3>
-                </div>
-            </div>
-        </Link>
-    )
-}
+//     return (
+//         <Link className="col-span-6" href={`/portfolio/${slug?.current}` || ""}>
+//             <div className="flex flex-col w-full">
+//                 <div className="aspect-[16/9] relative w-full h-full rounded-lg grayscale">
+//                     <Image src={urlForImage(featured_image?.asset)} alt={featured_image?.alt_text || ""} fill className="object-cover h-full w-full rounded-lg" />
+//                 </div>
+//                 <div className="flex flex-col mt-6">
+//                     <span className="text-accent font-mono text-sm uppercase tracking-[0.24em] font-bold mb-5">{category?.category_name}</span>
+//                     <h3 className="font-heading uppercase font-light text-[1.5rem] text-white-80 tracking-[0.18em] leading-tight">{title}</h3>
+//                 </div>
+//             </div>
+//         </Link>
+//     )
+// }

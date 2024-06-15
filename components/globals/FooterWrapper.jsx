@@ -43,8 +43,9 @@ const FooterWrapper = ({ contactDetails, footerOptions }) => {
                     {(emailExists || mobileExists) && <ContactLinksCol mobile={mobile_number} email={email_address} />}
                 </div>
             </div>
-            <div className="flex items-center justify-between">
-
+            <div className="flex items-center justify-between py-12">
+                <small className="uppercase font-heading text-xs tracking-[0.17em] opacity-50">&copy; Oli Crossland Videography 2024</small>
+                <small className="uppercase font-heading text-xs tracking-[0.17em] opacity-50">Site Design & Development By Jake Wood</small>
             </div>
         </>
     )

@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
 
-const ImageWrapper = ({ asset, alt_text }) => {
+const ImageWrapper = ({ asset, alt_text, priority = false, }) => {
     return (
         <>
-            {asset && <Image className="w-full h-full" src={urlForImage(asset)} alt={alt_text || ""} fill objectFit="cover" />}
+            {asset && <Image className="w-full h-full" src={urlForImage(asset)} alt={alt_text || ""} fill objectFit="cover" priority={priority} />}
         </>
     )
 }

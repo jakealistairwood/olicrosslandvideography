@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { urlForImage } from "@/sanity/lib/image";
 
 import PortfolioMasthead from "@/components/mastheads/PortfolioMasthead";
@@ -38,9 +37,11 @@ export default PortfolioWrapper;
 const PortfolioGallery = ({ portfolio }) => {
     return (
         <div className="container grid grid-cols-2 gap-x-10 gap-y-20 mt-20 pb-[140px]">
-            {portfolio?.map((project, i) => (
-                <ProjectCard key={`project-card-${i}`} index={i} {...project} />
-            ))}
+            <AnimatePresence>
+                {portfolio?.map((project, i) => (
+                    <ProjectCard key={`project-card-${project._id}`} index={i} {...project} />
+                ))}
+            </AnimatePresence>
         </div>
     )
 }
@@ -68,6 +69,15 @@ const ProjectCard = ({ slug, featured_image, category, title, index }) => {
                 duration: 0.5,
                 ease: "easeOut",
             }),
+        },
+        exit: {
+            opacity: 0,
+            y: 20,
+            filter: "blur(20px)",
+            transition: {
+                duration: 0.5,
+                ease: "easeIn",
+            },
         }
     }
 

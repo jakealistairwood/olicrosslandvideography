@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^3.0.1",
+    "@tailwindcss/typography": "^0.5.13",
     "@types/react": "^18.0.25",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",

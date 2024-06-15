@@ -8,12 +8,14 @@ import { sectionOptions } from "./schemas/sectionOptions"
 import { assetOptions } from "./schemas/assetOptions"
 import { fullWidthAsset } from "./schemas/fullWidthAsset"
 import { homeMasthead } from "./schemas/homeMasthead"
+import { aboutMasthead } from "./schemas/aboutMasthead"
 import { sectionHeader } from "./schemas/sectionHeader"
 import { logoMarquee } from "./schemas/logoMarquee"
 import { textImageMarquee } from "./schemas/textImageMarquee"
 import { introduction } from "./schemas/introduction"
 import { selectedWorks } from "./schemas/selectedWorks"
 import { timedTextImageSlider } from "./schemas/timedTextImageSlider"
+import { jobExperiences } from "./schemas/jobExperiences"
 
 export const schema = {
   types: [
@@ -27,11 +29,13 @@ export const schema = {
     assetOptions,
     fullWidthAsset,
     homeMasthead,
+    aboutMasthead,
     sectionHeader,
     logoMarquee,
     textImageMarquee,
     introduction,
     selectedWorks,
     timedTextImageSlider,
+    jobExperiences,
   ],
 }

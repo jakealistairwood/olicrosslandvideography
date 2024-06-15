@@ -2,7 +2,7 @@ import React, { memo, useRef } from "react";
 import ComponentRenderer from "./ComponentRenderer";
 
 const Section = memo((props) => {
-    const { components = [], sectionOptions = {} } = props;
+    const { components = [], sectionOptions = {}, contactDetails } = props;
     const { remove_container = false, padding_top = "none", padding_bottom = "none", inner_spacing = "regular", background_color = "black" } = sectionOptions;
 
     const getBackgroundColor = {
@@ -18,7 +18,7 @@ const Section = memo((props) => {
     return (
         <section className={`${renderTopPadding(padding_top)} ${renderBottomPadding(padding_bottom)} ${getBackgroundColor[background_color]}`}>
             <div className={`flex flex-col ${getInnerSpacing[inner_spacing]} ${!remove_container ? "container" : ""}`}>
-                <ComponentRenderer components={components} />
+                <ComponentRenderer components={components} contactDetails={contactDetails} />
             </div>
         </section>
     )

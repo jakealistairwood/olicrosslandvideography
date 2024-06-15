@@ -41,3 +41,13 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+
+const NavLink = ({ label, url }) => {
+    return (
+        <Link href={url || ""} className="block relative group overflow-hidden mt-20 min-h-[1.2rem]">
+            <div className="absolute top-0 left-0 group-hover:top-[-100%] transition-all duration-300 ease group-hover:opacity-0">{label}</div>
+            <div className="absolute top-[100%] left-0 group-hover:top-0 transition-all duration-300 ease">{label}</div>
+        </Link>
+    )
+}
