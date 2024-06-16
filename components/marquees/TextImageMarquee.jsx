@@ -7,7 +7,7 @@ const TextImageMarquee = (props) => {
     const { marquee_items } = props;
     const duplicatedItems = [...marquee_items, ...marquee_items];
     return (
-        <Marquee className="bg-accent text-black flex items-center py-3">
+        <Marquee className="bg-accent text-black flex items-center py-3 pointer-events-none">
             {duplicatedItems?.map((item, i) => (
                 <div key={`text-image-marquee-item-${i}`} className="flex items-center gap-x-[60px] pr-[60px]">
                     <div className="relative">

@@ -6,6 +6,7 @@ import { contactDetails } from "./schemas/contactDetails"
 import { section } from "./schemas/section"
 import { sectionOptions } from "./schemas/sectionOptions"
 import { assetOptions } from "./schemas/assetOptions"
+import { customLink } from "./schemas/customLink"
 import { fullWidthAsset } from "./schemas/fullWidthAsset"
 import { homeMasthead } from "./schemas/homeMasthead"
 import { aboutMasthead } from "./schemas/aboutMasthead"
@@ -16,6 +17,7 @@ import { introduction } from "./schemas/introduction"
 import { selectedWorks } from "./schemas/selectedWorks"
 import { timedTextImageSlider } from "./schemas/timedTextImageSlider"
 import { jobExperiences } from "./schemas/jobExperiences"
+import { threeColGrid } from "./schemas/threeColGrid"
 
 export const schema = {
   types: [
@@ -27,6 +29,7 @@ export const schema = {
     section,
     sectionOptions,
     assetOptions,
+    customLink,
     fullWidthAsset,
     homeMasthead,
     aboutMasthead,
@@ -37,5 +40,6 @@ export const schema = {
     selectedWorks,
     timedTextImageSlider,
     jobExperiences,
+    threeColGrid
   ],
 }

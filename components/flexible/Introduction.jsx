@@ -6,7 +6,7 @@ const Introduction = ({ subheading = "", word_switcher= {} }) => {
     console.log(words_to_animate);
 
     return (
-        <div className="flex gap-x-[120px]">
+        <div className="flex flex-col lg:flex-row gap-y-10 gap-x-[120px]">
             <span className="font-heading text-carbon uppercase font-medium tracking-[0.24em] text-sm">{subheading}</span>
             <WordSwitcher words_group={words_to_animate} />
         </div>

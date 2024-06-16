@@ -34,6 +34,7 @@ export const section = {
                                     { title: "Home Masthead", value: "homeMasthead" },
                                     { title: "About Masthead", value: "aboutMasthead" },
                                     { title: "Section Header", value: "sectionHeader" },
+                                    { title: "Custom Link", value: "customLink" },
                                     { title: "Logo Marquee", value: "logoMarquee" },
                                     { title: "Text Image Marquee", value: "textImageMarquee" },
                                     { title: "Full Width Asset", value: "fullWidthAsset" },
@@ -41,6 +42,7 @@ export const section = {
                                     { title: "Introduction", value: "introduction" },
                                     { title: "Timed Text Image Slider", value: "timedTextImageSlider" },
                                     { title: "Job Experiences", value: "jobExperiences" },
+                                    { title: "Three Col Grid", value: "threeColGrid" },
                                 ]
                             },
                             initialValue: "",
@@ -62,6 +64,12 @@ export const section = {
                             type: "sectionHeader",
                             title: "Section Header",
                             hidden: ({ parent }) => parent.component!== "sectionHeader",
+                        },
+                        {
+                            name: "customLink",
+                            type: "customLink",
+                            title: "Custom Link",
+                            hidden: ({ parent }) => parent.component!== "customLink",
                         },
                         {
                             name: "logoMarquee",
@@ -104,6 +112,12 @@ export const section = {
                             type: "jobExperiences",
                             title: "Job Experiences",
                             hidden: ({ parent }) => parent.component!== "jobExperiences",
+                        },
+                        {
+                            name: "threeColGrid",
+                            type: "threeColGrid",
+                            title: "Three Column Grid",
+                            hidden: ({ parent }) => parent.component!== "threeColGrid",
                         }
                     ]
                 },

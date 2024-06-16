@@ -18,7 +18,7 @@ const FooterWrapper = ({ contactDetails, footerOptions }) => {
     return (
         <>
             <div className="grid grid-cols-12 pt-20 pb-16">
-                <div className="col-span-7 flex flex-col">
+                <div className="col-span-12 lg:col-span-7 flex flex-col">
                     <div className="flex flex-col">
                         {cta?.heading && cta?.heading?.length > 0 && <h3 className="text-[2.5rem] font-heading uppercase tracking-[0.05em]">{cta?.heading}</h3>}
                         {linkExists && <Link className="flex items-center gap-2 mt-4" href={cta?.button?.link}>
@@ -31,14 +31,14 @@ const FooterWrapper = ({ contactDetails, footerOptions }) => {
                         </Link>}
                     </div>
                     {socials && socials.length > 0 && (
-                        <div className="mt-auto pt-[110px] flex items-center gap-3">
+                        <div className="mt-auto pt-20 lg:pt-[110px] flex items-center gap-3">
                             {socials?.map((social, i) => (
                                 <SocialLink key={`social-profile-link-${i}`} {...social} />
                             ))}
                         </div>
                     )}
                 </div>
-                <div className="col-span-5 flex gap-x-[140px]">
+                <div className="col-span-12 lg:col-span-5 flex gap-x-[140px] mt-[60px] lg:mt-0">
                     <SiteLinksCol />
                     {(emailExists || mobileExists) && <ContactLinksCol mobile={mobile_number} email={email_address} />}
                 </div>
@@ -65,7 +65,7 @@ const SiteLinksCol = () => {
     return (
         <nav>
             <h5 className="font-heading text-sm uppercase font-bold tracking-[0.24em]">Site</h5>
-            <menu className="mt-10 font-mono flex flex-col gap-y-6">
+            <menu className="mt-10 font-mono flex flex-col text-sm gap-y-6">
                 <li>
                     <Link href="/" className="uppercase tracking-[0.04em] text-white-80">Home</Link>
                 </li>
@@ -84,7 +84,7 @@ const ContactLinksCol = ({ mobile, email }) => {
     return (
         <nav>
             <h5 className="font-heading text-sm uppercase font-bold tracking-[0.24em]">Contact</h5>
-            <menu className="mt-10 font-mono flex flex-col gap-y-6">
+            <menu className="mt-10 font-mono flex flex-col text-sm gap-y-6">
                 <li>
                     <Link href={`mailto:${email}` || ""} className="flex items-center gap-x-4 uppercase tracking-[0.04em] text-white-80">
                         <div className="">

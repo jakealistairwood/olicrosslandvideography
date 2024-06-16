@@ -78,6 +78,11 @@ export const sectionHeader = defineType({
                             initialValue: "default",
                         }
                     ]
+                },
+                {
+                    name: "max_width",
+                    type: "string",
+                    title: "Max Width",
                 }
             ]
         }

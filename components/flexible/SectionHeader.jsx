@@ -1,7 +1,7 @@
 import React from "react";
 
 const SectionHeader = ({ subheading = "", heading = "", options }) => {
-    const { headingTextOptions, text_align } = options;
+    const { headingTextOptions, text_align, max_width } = options;
 
     const headingFontSize = {
         "40": "text-[2.5rem]",
@@ -31,9 +31,9 @@ const SectionHeader = ({ subheading = "", heading = "", options }) => {
     const trackingClass = getTrackingClass[headingTextOptions.letter_spacing];
 
     return (
-        <header className={`flex flex-col w-full max-w-[680px] ${getAligmentClasses[text_align]} gap-y-8`}>
+        <header className={`flex flex-col w-full ${getAligmentClasses[text_align]} gap-y-8`} style={{ maxWidth: `${max_width}px` || "unset" }}>
             {subheading && subheading.length > 0 && <span className="font-heading text-carbon uppercase font-medium tracking-[0.24em] text-sm">{subheading}</span>}
-            {heading && heading.length > 0 && <h2 className={`uppercase font-heading ${fontSize} ${fontWeight} ${trackingClass}`}>{heading}</h2>}
+            {heading && heading.length > 0 && <h2 className={`uppercase font-heading leading-[1.1] ${fontSize} ${fontWeight} ${trackingClass}`}>{heading}</h2>}
         </header>
     )
 }

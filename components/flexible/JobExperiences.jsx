@@ -40,7 +40,7 @@ const JobExperience = ({ company = {}, date = {}, responsibilities = [], role = 
     
 
     return (
-        <div className="border-b border-white/20 hover:bg-white/10">
+        <div className="border-b border-white/20 hover:bg-white/10 overflow-hidden">
             <button className="grid grid-cols-12 py-[30px] w-full text-left" type="button" onClick={() => setOpenExperience(!openExperience)}>
                 <div className="col-span-3">
                     {name && name.length > 0 && <h3 className="text-lg font-heading uppercase tracking-[0.18em] font-normal text-white/50">{name}</h3>}
