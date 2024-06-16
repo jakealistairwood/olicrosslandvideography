@@ -37,7 +37,7 @@ const NavbarWrapper = () => {
         window.addEventListener("scroll", handleScroll);
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [window.scrollY]);
+    }, []);
 
     return (
         <motion.nav variants={navbarAnimation} initial="initial" animate={scrolled ? "animate" : "initial"} className="fixed top-0 left-0 w-full right-0 z-[999] py-4">
