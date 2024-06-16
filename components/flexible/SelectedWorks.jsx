@@ -27,7 +27,7 @@ export default SelectedWorks;
 const FeaturedProject = ({ project }) => {
     const { featured_image, category, title, slug, date } = project;
     return (
-        <div className="col-span-12 bg-graphite p-12 rounded-2xl grid grid-cols-1 lg:grid-cols-[55%_auto] gap-x-20 group">
+        <div className="col-span-12 bg-graphite p-12 rounded-2xl grid grid-cols-1 lg:grid-cols-[55%_auto] gap-x-20 group" id="selected-works">
             <div className="relative h-full w-full aspect-[16/9] rounded-lg grayscale group-hover:grayscale-0 duration-300 ease transition-all">
                 <Image src={urlForImage(featured_image?.asset)} alt={featured_image?.alt_text || ""} fill className="object-cover h-full w-full rounded-lg" />
             </div>

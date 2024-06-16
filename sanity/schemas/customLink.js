@@ -53,6 +53,13 @@ export const customLink = defineType({
             hidden: ({ parent }) => !parent?.include_icon,
         },
         {
+            name: "center_link",
+            type: "boolean",
+            title: "Center Link",
+            group: "settings",
+            initialValue: false,
+        },
+        {
             name: "url",
             type: "string",
             title: "URL",

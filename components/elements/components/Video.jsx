@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
 
 const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) => {
     const [playVideo, setPlayVideo] = useState(false);
+    
+    const embedRef = useRef(null);
 
     const fadeOutThumbnail = {
         initial: {
@@ -19,10 +21,32 @@ const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) 
         }
     }
 
+    useEffect(() => {
+        const youtubeAPIScript = document.createElement("script");
+        youtubeAPIScript.src = "https://www.youtube.com/iframe_api";
+
+        const firstScriptTag = document.getElementsByTagName("script")[0];
+        firstScriptTag.parentNode.insertBefore(youtubeAPIScript, firstScriptTag);
+    }, []);
+
+    const handleYoutubeEmbed = (ref) => {
+        if (ref.current) {
+            const youtubeEmbed = ref.current;
+            const message = {
+                event: "command",
+                func: "playVideo",
+            }
+            youtubeEmbed.contentWindow.postMessage(JSON.stringify(message), "*");
+        }
+    }
+
     return (
         <div style={{ paddingTop: "56.25%", position: "relative" }}>
             {add_thumbnail && thumbnail?.asset && (
-                <motion.button type="button" aria-label="Play Video" variants={fadeOutThumbnail} initial="initial" animate={playVideo ? "hidden" : "initial"} className="absolute inset-0 z-[2]" onClick={() => setPlayVideo(true)}>
+                <motion.button type="button" aria-label="Play Video" variants={fadeOutThumbnail} initial="initial" animate={playVideo ? "hidden" : "initial"} className="absolute inset-0 z-[2]" onClick={() => {
+                    setPlayVideo(true);
+                    handleYoutubeEmbed(embedRef);
+                }}>
                     <Image className="w-full h-full" src={urlForImage(thumbnail?.asset)} fill alt="" />
                     <div className="absolute z-[10] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-full bg-white/[12%] backdrop-blur-lg flex items-center justify-center">
                         <svg
@@ -49,6 +73,7 @@ const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) 
                 allow="autoplay; fullscreen"
                 width="100%"
                 height="100%"
+                ref={embedRef}
             />
         </div>
     )

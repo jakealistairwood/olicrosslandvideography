@@ -8,6 +8,21 @@ import { motion } from "framer-motion";
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
 
+    const navbarAnimation = {
+        initial: {
+            backgroundColor: "transparent",
+            backdropFilter: "blur(0px)",
+        },
+        animate: {
+            backgroundColor: "rgba(0, 0, 0, 0.3)",
+            backdropFilter: "blur(12px)",
+            transition: {
+                duration: 0.3,
+                ease: "easeOut",
+            }
+        }
+    }
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 100) {
@@ -25,7 +40,7 @@ const Navbar = () => {
     }, [window.scrollY]);
 
     return (
-        <nav className="fixed top-0 left-0 w-full right-0 z-[999] h-[40px] py-4">
+        <motion.nav variants={navbarAnimation} initial="initial" animate={scrolled ? "animate" : "initial"} className="fixed top-0 left-0 w-full right-0 z-[999] py-4">
             <div className="container flex items-center justify-between">
                 <div className="flex items-center font-mono font-normal gap-x-12">
                     <div className="relative aspect-[105/18] max-w-[105px] w-full">
@@ -33,13 +48,13 @@ const Navbar = () => {
                     </div>
                     <menu className="flex items-center text-white-80 gap-10 uppercase text-sm">
                         <li>
-                            <Link href="/">Home</Link>
+                            <NavLink label="Home" url="/" />
                         </li>
                         <li>
-                            <Link href="/about">About</Link>
+                            <NavLink label="About" url="/about" />
                         </li>
                         <li>
-                            <Link href="/portfolio">Portfolio</Link>
+                            <NavLink label="Portfolio" url="/portfolio" />
                         </li>
                     </menu>
                 </div>
@@ -54,7 +69,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </nav>
+        </motion.nav>
     )
 }
 
@@ -62,10 +77,38 @@ export default Navbar;
 
 
 const NavLink = ({ label, url }) => {
+    const [hovered, setHovered] = useState(false);
+
+    const topLineAnimation = {
+        initial: {
+            y: "0%",
+        },
+        animate: {
+            y: "-100%",
+        }
+    }
+
+    const bottomLineAnimation = {
+        initial: {
+            y: "100%",
+        },
+        animate: {
+            y: "0%",
+        }
+    }
+
     return (
-        <Link href={url || ""} className="block relative group overflow-hidden mt-20 min-h-[1.2rem]">
-            <div className="absolute top-0 left-0 group-hover:top-[-100%] transition-all duration-300 ease group-hover:opacity-0">{label}</div>
-            <div className="absolute top-[100%] left-0 group-hover:top-0 transition-all duration-300 ease">{label}</div>
+        <Link 
+            href={url || ""} 
+            className="relative flex flex-col overflow-hidden"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onFocus={() => setHovered(true)}
+            onBlur={() => setHovered(false)}
+        >
+            <span className="inline-block relative left-0 opacity-0">{label}</span>
+            <motion.span variants={topLineAnimation} initial="initial" animate={hovered ? "animate" : "initial"} className="inline-block absolute left-0">{label}</motion.span>
+            <motion.span variants={bottomLineAnimation} initial="initial" animate={hovered ? "animate" : "initial"} className="inline-block absolute left-0">{label}</motion.span>
         </Link>
     )
 }
