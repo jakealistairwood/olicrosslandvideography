@@ -20,12 +20,12 @@ const WordSwitcher = ({ words_group }) => {
         <h2 className="font-body text-white-80 text-[2.5rem] font-light max-w-[820px] w-full">
             {words_group?.map((group, i) => (
                 group?.animate_group ? (
-                    <>
+                    <React.Fragment key={`word-group-${i}`}>
                         <SwitchWords words_to_switch={group?.animated_text} />
                         <br />
-                    </>
+                    </React.Fragment>
                 ) : (
-                    <span className="inline">{group?.text}</span>
+                    <span key={`word-group-${i}`} className="inline">{group?.text}</span>
                 )
             ))}
         </h2>

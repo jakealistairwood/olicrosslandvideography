@@ -13,9 +13,9 @@ const SelectedWorks = ({ projects }) => {
         <div className="grid grid-cols-12 gap-x-10 gap-y-20">
             {projects?.map((project, i) => (
                 i === 0 ? (
-                    <FeaturedProject project={project} />
+                    <FeaturedProject key={`featured-project-${project._key}`} project={project} />
                 ) : (
-                    <ProjectCard {...project} />
+                    <ProjectCard key={`project-${project._key}`} {...project} />
                 )
             ))}
         </div>

@@ -40,12 +40,12 @@ const AnimatedNavLink = ({ url, label }) => {
         <Link href={url || ""} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className="block relative overflow-hidden h-[1.5em]">
             <div className="flex items-center">
                 {label.split("").map((char, i) => (
-                    <motion.div variants={topLineAnimation} initial="initial" custom={i} animate={hovered ? "animate" : "initial"} className="">{char}</motion.div>
+                    <motion.div key={`letter-${i}`} variants={topLineAnimation} initial="initial" custom={i} animate={hovered ? "animate" : "initial"} className="">{char}</motion.div>
                 ))}
             </div>
             <div className="flex items-center">
                 {label.split("").map((char, i) => (
-                    <motion.div variants={bottomLineAnimation} initial="initial" custom={i} animate={hovered ? "animate" : "initial"} className="">{char}</motion.div>
+                    <motion.div key={`letter-${i}`} variants={bottomLineAnimation} initial="initial" custom={i} animate={hovered ? "animate" : "initial"} className="">{char}</motion.div>
                 ))}
             </div>
         </Link>
