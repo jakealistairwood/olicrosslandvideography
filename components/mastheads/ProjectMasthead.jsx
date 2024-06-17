@@ -43,7 +43,7 @@ const ProjectMasthead = ({ title, category, date, featured_image, video_id }) =>
 
     return (
         <header className="flex flex-col">
-            <h1 className="font-heading text-[7.875rem] uppercase tracking-[0.04em] leading-[1] text-ice font-medium pt-20 text-balance">{title}</h1>
+            <h1 className="font-heading ~text-[4rem]/[7.875rem] uppercase tracking-[0.04em] leading-[1] text-ice font-medium pt-20 text-balance">{title}</h1>
             <div className="flex justify-between items-center mt-10">
                 <h4 className="uppercase font-heading text-normal text-accent tracking-[0.24em]">
                     <span className="text-[#535353] mr-4">Category</span>
@@ -73,7 +73,8 @@ const ProjectAssetHandler = ({ asset, video_id, title }) => {
     const videoOptions = {
         add_thumbnail: true,
         thumbnail: asset,
-        title 
+        title,
+        video_id: video_id,
     }
 
     return (

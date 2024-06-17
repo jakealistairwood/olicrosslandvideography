@@ -37,12 +37,12 @@ const HomeMasthead = ({ heading = "", tagline = "", image }) => {
             <Image className="z-[1] relative" src={urlForImage(image?.asset)} fill objectFit="cover" priority />
             <header ref={headerRef} className="flex flex-col items-center text-center relative z-[2] pt-[80px]">
                 {heading && heading?.length > 0 && (
-                    <h1 className="!font-heading text-[7.875rem] uppercase tracking-[0.04em] text-white-80 overflow-hidden relative">
+                    <h1 className="!font-heading ~text-[4rem]/[7.875rem] uppercase tracking-[0.04em] text-white-80 overflow-hidden relative">
                         <motion.span variants={animateText} initial="initial" custom={0} animate={isInView && domLoaded ? "animate" : "initial"} className="will-change-transform inline-block">{heading}</motion.span>
                     </h1>
                 )}
                 {tagline && tagline?.length > 0 && (
-                    <h2 className="!font-heading text-accent uppercase font-light tracking-[0.13em] text-[2.5rem] -mt-6 overflow-hidden">
+                    <h2 className="!font-heading text-accent uppercase font-light tracking-[0.13em] ~text-[1.5rem]/[2.5rem] -mt-[0.8em] overflow-hidden">
                         <motion.span variants={animateText} initial="initial" custom={1} animate={isInView && domLoaded? "animate" : "initial"} className="will-change-transform inline-block">{tagline}</motion.span>
                     </h2>
                 )}

@@ -31,7 +31,7 @@ const ProjectCard = ({ slug, featured_image, category, title, index }) => {
     }
 
     return (
-        <Link className="col-span-6" href={`/portfolio/${slug.current}`} ref={projectRef}>
+        <Link className="col-span-1 md:col-span-6" href={`/portfolio/${slug.current}`} ref={projectRef}>
             <motion.div variants={fadeInProject} initial="initial" animate={isInView ? "animate" : "initial"} custom={index} className="flex flex-col">
                 <div className="aspect-[16/9] relative w-full">
                     <Image src={urlForImage(featured_image?.asset)} alt={featured_image?.alt_text || ""} fill className="w-full h-full object-cover" />
