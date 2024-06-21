@@ -38,12 +38,12 @@ const FooterWrapper = ({ contactDetails, footerOptions }) => {
                         </div>
                     )}
                 </div>
-                <div className="col-span-12 lg:col-span-5 flex gap-x-[140px] mt-[60px] lg:mt-0">
+                <div className="col-span-12 lg:col-span-5 flex gap-x-10 sm:gap-x-[140px] mt-[60px] lg:mt-0">
                     <SiteLinksCol />
                     {(emailExists || mobileExists) && <ContactLinksCol mobile={mobile_number} email={email_address} />}
                 </div>
             </div>
-            <div className="flex items-center justify-between py-12">
+            <div className="flex flex-col items-start gap-y-4 sm:flex-row sm:items-center justify-between py-12">
                 <small className="uppercase font-heading text-xs tracking-[0.17em] opacity-50">&copy; Oli Crossland Videography 2024</small>
                 <small className="uppercase font-heading text-xs tracking-[0.17em] opacity-50">Site Design & Development By Jake Wood</small>
             </div>

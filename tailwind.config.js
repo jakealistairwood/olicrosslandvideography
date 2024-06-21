@@ -50,6 +50,7 @@ module.exports = {
       colors: {
         "accent": "#FD6746",
         "carbon": "#808080",
+        "oxide": "#0e1014",
         "graphite": "#1A1919",
         "ice": "#DEDEDE",
         "white-80": "rgba(255, 255, 255, 0.8)",

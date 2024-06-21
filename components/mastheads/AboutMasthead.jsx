@@ -30,9 +30,9 @@ const AboutMasthead = ({
     return (
         <>
             <header className="flex flex-col">
-                <h1 className="font-heading text-[7.875rem] uppercase tracking-[0.04em] leading-[1] text-ice font-medium pt-20 text-balance">{heading}</h1>
+                <h1 className="font-heading ~text-[5.5rem]/[7.875rem] uppercase tracking-[0.04em] leading-[1] text-ice font-medium pt-20 text-balance">{heading}</h1>
                 {include_contact_details && (
-                    <div className="flex justify-between items-center mt-10">
+                    <div className="flex flex-col items-start gap-y-6 sm:flex-row sm:justify-between sm:items-center mt-10">
                         <h4 className="uppercase font-heading text-normal text-accent tracking-[0.24em]">
                             <span className="text-[#535353] mr-4">Email Address</span>
                             {email_address}
@@ -118,7 +118,7 @@ const AboutMeArticle = ({ header, content }) => {
         <article className="max-w-[780px] w-full ml-auto flex flex-col pb-[140px] gap-y-[60px]">
             {header && header.length > 0 && (
                 <motion.header ref={headerRef} variants={fadeInAndUp} initial="initial" animate={headerInView ? "animate" : "initial"}>
-                    <h3 className="text-[2.5rem] tracking-[0.02em] font-light leading-[1.3] text-balance">{header}</h3>
+                    <h3 className="~text-[1.5rem]/[2.5rem] tracking-[0.02em] font-light leading-[1.3] text-balance">{header}</h3>
                 </motion.header>
             )}
             <motion.div ref={articleRef} variants={fadeInAndUp} initial="initial" animate={articleInView ? "animate" : "initial"} className="prose max-w-[unset] prose--dark">
