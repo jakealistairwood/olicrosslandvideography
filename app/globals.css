@@ -16,7 +16,8 @@
   }
 
   .gap-y-rg {
-    row-gap: 6.875rem;
+    /* row-gap: 6.875rem; */
+    @apply ~gap-y-[5.5rem]/[6.875rem];
   }
 }
 
@@ -31,4 +32,8 @@ html, body {
   p {
     @apply text-white-80 text-lg font-light leading-[1.6] tracking-[0.01em];
   }
+}
+
+.text-80 {
+  @apply ~text-[3.8rem]/[5rem];
 }

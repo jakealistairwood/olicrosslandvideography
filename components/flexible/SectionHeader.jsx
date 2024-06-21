@@ -5,7 +5,8 @@ const SectionHeader = ({ subheading = "", heading = "", options }) => {
 
     const headingFontSize = {
         "40": "text-[2.5rem]",
-        "80": "text-[5rem]",
+        // "80": "text-[5rem]",
+        "80": "text-80",
     }
 
     const headingFontWeights = {
