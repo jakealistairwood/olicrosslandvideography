@@ -38,7 +38,7 @@ export default PortfolioWrapper;
 
 const PortfolioGallery = ({ portfolio }) => {
     return (
-        <div className="container grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-20 mt-20 pb-[140px]">
+        <div className="container grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-12 md:gap-y-20 mt-12 md:mt-20 pb-[140px]">
             <AnimatePresence>
                 {portfolio?.map((project, i) => (
                     <ProjectCard key={`project-card-${project._id}`} index={i} {...project} />
