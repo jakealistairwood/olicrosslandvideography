@@ -34,6 +34,10 @@ module.exports = {
         sm: "1.5rem",
         md: "2rem",
         xl: "0",
+      },
+      screens: {
+        md: "1024px",
+        lg: "1440px",
       }
     },
     extend: {

@@ -115,13 +115,13 @@ const AboutMeArticle = ({ header, content }) => {
     }
 
     return (
-        <article className="max-w-[780px] w-full ml-auto flex flex-col pb-[140px] gap-y-[60px]">
+        <article className="max-w-[780px] w-full ml-auto flex flex-col pb-[140px]">
             {header && header.length > 0 && (
                 <motion.header ref={headerRef} variants={fadeInAndUp} initial="initial" animate={headerInView ? "animate" : "initial"}>
                     <h3 className="~text-[1.5rem]/[2.5rem] tracking-[0.02em] font-light leading-[1.3] text-balance">{header}</h3>
                 </motion.header>
             )}
-            <motion.div ref={articleRef} variants={fadeInAndUp} initial="initial" animate={articleInView ? "animate" : "initial"} className="prose max-w-[unset] prose--dark">
+            <motion.div ref={articleRef} variants={fadeInAndUp} initial="initial" animate={articleInView ? "animate" : "initial"} className="prose max-w-[unset] prose--dark ~mt-[2.5rem]/[4rem]">
                 <PortableText value={content} />
             </motion.div>
         </article>

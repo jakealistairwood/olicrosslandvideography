@@ -27,6 +27,19 @@ export const timedTextImageSlider = {
                             name: "image",
                             title: "Image",
                             type: "image",
+                            fields: [
+                                {
+                                    name: "alt_text",
+                                    title: "Alternative Text",
+                                    type: "string",
+                                },
+                                {
+                                    name: "add_grayscale",
+                                    title: "Add Grayscale",
+                                    type: "boolean",
+                                    default: false,
+                                }
+                            ],
                         }
                     ]
                 }

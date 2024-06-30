@@ -30,7 +30,7 @@ html, body {
 
 .prose--dark {
   p {
-    @apply text-white-80 text-lg font-light leading-[1.6] tracking-[0.01em];
+    @apply text-white-80 ~text-[1rem]/[1.125rem] font-light leading-[1.6] tracking-[0.01em];
   }
 }
 
