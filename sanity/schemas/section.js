@@ -43,6 +43,9 @@ export const section = {
                                     { title: "Timed Text Image Slider", value: "timedTextImageSlider" },
                                     { title: "Job Experiences", value: "jobExperiences" },
                                     { title: "Three Col Grid", value: "threeColGrid" },
+                                    { title: "Scrollable Text", value: "scrollableText" },
+                                    { title: "Links Wrapper", value: "linksWrapper" },
+                                    { title: "Three Col Gallery", value: "threeColGallery" },
                                 ]
                             },
                             initialValue: "",
@@ -118,6 +121,24 @@ export const section = {
                             type: "threeColGrid",
                             title: "Three Column Grid",
                             hidden: ({ parent }) => parent.component!== "threeColGrid",
+                        },
+                        {
+                            name: "scrollableText",
+                            type: "scrollableText",
+                            title: "Scrollable Text",
+                            hidden: ({ parent }) => parent.component!== "scrollableText",
+                        },
+                        {
+                            name: "linksWrapper",
+                            type: "linksWrapper",
+                            title: "Links Wrapper",
+                            hidden: ({ parent }) => parent.component!== "linksWrapper",
+                        },
+                        {
+                            name: "threeColGallery",
+                            type: "threeColGallery",
+                            title: "Three Column Gallery",
+                            hidden: ({ parent }) => parent.component!== "threeColGallery",
                         }
                     ]
                 },

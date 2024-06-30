@@ -12,6 +12,7 @@ const Section = memo((props) => {
 
     const getInnerSpacing = {
         none: "gap-y-0",
+        small: "gap-y-sm",
         regular: "gap-y-rg",
     };
 

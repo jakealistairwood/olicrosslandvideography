@@ -34,8 +34,8 @@ const TimedTextImageSlider = ({ slider_items = [] }) => {
     }, [slider_items.length, activeSlide, isInView]);
 
     return (
-        <div className="flex gap-x-[100px]" ref={containerRef}>
-            <div className="flex-flex-col max-w-[480px] w-full">
+        <div id="timed-text-image-slider" className="flex flex-col gap-y-20 gap-x-[100px]" ref={containerRef}>
+            <div className="flex-flex-col lg:max-w-[480px] w-full">
                 {slider_items?.map((item, i) => (
                     <SliderAccordionItem key={`timed-accordion-item-${item?._key}`} {...item} index={i} isActiveSlide={activeSlide === i} setActiveSlide={setActiveSlide} />
                 ))}

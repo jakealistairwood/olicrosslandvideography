@@ -12,6 +12,9 @@ const Introduction = dynamic(() => import("@/components/flexible/Introduction"))
 const JobExperiences = dynamic(() => import("@/components/flexible/JobExperiences"));
 const TimedTextImageSlider = dynamic(() => import("@/components/flexible/TimedTextImageSlider"));
 const ThreeColGrid = dynamic(() => import("@/components/flexible/ThreeColGrid"));
+const ScrollableText = dynamic(() => import("@/components/flexible/ScrollableText"));
+const LinksWrapper = dynamic(() => import("@/components/flexible/LinksWrapper"));
+const ThreeColGallery = dynamic(() => import("@/components/flexible/ThreeColGallery"));
 
 const ComponentRenderer = ({ components = [], contactDetails }) => {
 
@@ -29,6 +32,9 @@ const ComponentRenderer = ({ components = [], contactDetails }) => {
             jobExperiences: JobExperiences,
             timedTextImageSlider: TimedTextImageSlider,
             threeColGrid: ThreeColGrid,
+            scrollableText: ScrollableText,
+            linksWrapper: LinksWrapper,
+            threeColGallery: ThreeColGallery,
         }[layoutName];
 
         return RenderedComponent ? <RenderedComponent key={`${key}`} {...otherProps} contactDetails={layoutName === "aboutMasthead" ? contactDetails : null} /> : null;

@@ -24,7 +24,7 @@ const SectionHeader = ({ subheading = "", heading = "", options }) => {
 
     const getTrackingClass = {
         "default": "tracking-[0.04em] text-ice",
-        "stretched": "tracking-[0.18em] text-white-80",
+        "stretched": "tracking-[0.18em] text-white",
     }
 
     const fontSize = headingFontSize[headingTextOptions.font_size];

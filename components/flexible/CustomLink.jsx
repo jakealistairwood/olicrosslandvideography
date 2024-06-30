@@ -29,7 +29,11 @@ const CustomLink = ({
     if (center_link) wrapperClasses.push("mx-auto");
     if (type === "bordered") {
         wrapperClasses.push("px-5 py-4 border border-white/20 rounded-lg");
-        labelClasses.push("font-bold text-sm");
+        labelClasses.push("font-medium text-sm");
+    }
+    if (type === "button") {
+        wrapperClasses.push("bg-[#262628] px-5 py-4 rounded-lg");
+        labelClasses.push("font-medium text-sm");
     }
 
     const topLineAnimation = {
@@ -93,7 +97,7 @@ const CustomLink = ({
                 </motion.div>
             )}
             {type !== "default" && (
-                <motion.div variants={maskAnimation} initial="initial" animate={hovered ? "hovered" : "initial"} className="absolute inset-0 origin-left bg-accent w-full h-full" />
+                <motion.div variants={maskAnimation} initial="initial" animate={hovered ? "hovered" : "initial"} className={`absolute inset-0 origin-left ${type === "button" ? "bg-white" : "bg-accent"} w-full h-full`} />
             )}
         </Link>
     )

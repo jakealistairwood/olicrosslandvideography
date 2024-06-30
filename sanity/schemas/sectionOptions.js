@@ -53,6 +53,7 @@ export const sectionOptions = defineType({
             options: {
                 list: [
                     { title: "None", value: "none" },
+                    { title: "Small", value: "small" },
                     { title: "Regular", value: "regular" },
                 ]
             },

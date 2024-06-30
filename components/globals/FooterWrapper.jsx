@@ -81,7 +81,7 @@ const FooterWrapper = ({ contactDetails, footerOptions }) => {
                         </div>
                     )}
                 </div>
-                <div className="col-span-12 lg:col-span-5 flex gap-x-10 sm:gap-x-[140px] mt-[60px] lg:mt-0">
+                <div className="col-span-12 lg:col-span-5 flex flex-col sm:flex-row gap-y-12 sm:gap-y-0 gap-x-10 sm:gap-x-[140px] mt-[60px] lg:mt-0">
                     <SiteLinksCol />
                     {(emailExists || mobileExists) && <ContactLinksCol mobile={mobile_number} email={email_address} />}
                 </div>

@@ -18,6 +18,9 @@ import { selectedWorks } from "./schemas/selectedWorks"
 import { timedTextImageSlider } from "./schemas/timedTextImageSlider"
 import { jobExperiences } from "./schemas/jobExperiences"
 import { threeColGrid } from "./schemas/threeColGrid"
+import { scrollableText } from "./schemas/scrollableText"
+import { linksWrapper } from "./schemas/linksWrapper"
+import { threeColGallery } from "./schemas/threeColGallery"
 
 export const schema = {
   types: [
@@ -40,6 +43,9 @@ export const schema = {
     selectedWorks,
     timedTextImageSlider,
     jobExperiences,
-    threeColGrid
+    threeColGrid,
+    scrollableText,
+    linksWrapper,
+    threeColGallery,
   ],
 }
