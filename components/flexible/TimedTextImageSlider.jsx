@@ -28,7 +28,7 @@ const TimedTextImageSlider = ({ slider_items = [] }) => {
     }, [activeSlide, swiperInstance]);
 
     useEffect(() => {
-        const interval = setInterval(() => setActiveSlide((prevSlide) => (prevSlide === slider_items.length -1 ? 0 : prevSlide + 1)), 5000);
+        const interval = setInterval(() => setActiveSlide((prevSlide) => (prevSlide === slider_items.length -1 ? 0 : prevSlide + 1)), 7000);
 
         return () => clearInterval(interval);
     }, [slider_items.length, activeSlide, isInView]);

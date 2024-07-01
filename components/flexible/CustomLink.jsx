@@ -10,6 +10,7 @@ const CustomLink = ({
     icon_type = "play",
     reverse_direction = false,
     center_link = false,
+    display_icon_by_default = false,
 }) => {
     const [hovered, setHovered] = useState(false);
 
@@ -28,7 +29,7 @@ const CustomLink = ({
     if (reverse_direction) wrapperClasses.push("row-reverse");
     if (center_link) wrapperClasses.push("mx-auto");
     if (type === "bordered") {
-        wrapperClasses.push("px-5 py-4 border border-white/20 rounded-lg");
+        wrapperClasses.push("px-5 py-4 border border-white/25 rounded-lg");
         labelClasses.push("font-medium text-sm");
     }
     if (type === "button") {
@@ -69,10 +70,10 @@ const CustomLink = ({
 
     const maskAnimation = {
         initial: {
-            scaleX: "0%",
+            scaleY: "0%",
         },
         hovered: {
-            scaleX: "102%",
+            scaleY: "102%",
         }
     }
 
@@ -83,7 +84,7 @@ const CustomLink = ({
             onMouseLeave={() => setHovered(false)}
             onFocus={() => setHovered(true)}
             onBlur={() => setHovered(false)}
-            className={`flex ${wrapperClasses.join(" ")} items-center gap-x-3 w-fit ${(type !== "default" && hovered) ? "text-black" : "text-white"} overflow-hidden relative`} 
+            className={`flex ${wrapperClasses.join(" ")} items-center gap-x-3 w-fit ${(type === "button" && hovered) ? "text-black" : "text-white"} overflow-hidden relative`} 
             href={url || ""}
         >
             <span className={`font-body relative flex flex-col z-[3] uppercase ${labelClasses.join(" ")} tracking-[0.15em] h-[1.4em] overflow-hidden`}>
@@ -92,12 +93,20 @@ const CustomLink = ({
                 <motion.span variants={bottomLineAnimation} initial="initial" animate={hovered ? "hovered" : "initial"} className="inline-block absolute left-0">{label}</motion.span>
             </span>
             {include_icon && (
-                <motion.div variants={iconAnimation} initial="initial" animate={hovered ? "show" : "initial"} className="flex items-center justify-center relative z-[3]">
-                    {renderIcon(icon_type)}
-                </motion.div>
+                <>
+                    {display_icon_by_default ? (
+                        <div className="flex items-center justify-center relative z-[3]">
+                            {renderIcon(icon_type)}
+                        </div>
+                    ) : (
+                        <motion.div variants={iconAnimation} initial="initial" animate={hovered ? "show" : "initial"} className="flex items-center justify-center relative z-[3]">
+                            {renderIcon(icon_type)}
+                        </motion.div>
+                    )}
+                </>
             )}
-            {type !== "default" && (
-                <motion.div variants={maskAnimation} initial="initial" animate={hovered ? "hovered" : "initial"} className={`absolute inset-0 origin-left ${type === "button" ? "bg-white" : "bg-accent"} w-full h-full`} />
+            {type === "button" && (
+                <motion.div variants={maskAnimation} initial="initial" animate={hovered ? "hovered" : "initial"} className={`absolute inset-0 origin-bottom ${type === "button" ? "bg-white" : "bg-accent"} w-full h-full`} />
             )}
         </Link>
     )

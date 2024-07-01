@@ -16,13 +16,13 @@ export default ThreeColGallery;
 
 const GalleryImage = ({ aspect_ratio, asset }) => {
     const getAspectRatio = {
-        "1:1": "aspect-[1/1] max-w-[32.5%]",
-        "16:9": "aspect-[16/9] max-w-[48%]",
-        "1:2": "aspect-[1/2] max-w-[19.5%]"
+        "1:1": "aspect-[16/9] md:aspect-[1/1] md:max-w-[32.5%]",
+        "16:9": "aspect-[16/9] md:max-w-[48%]",
+        "1:2": "aspect-[16/9] md:aspect-[1/2] md:max-w-[19.5%]"
     }
     return (
         <div className={`relative w-full h-full ${getAspectRatio[aspect_ratio]}`}>
-            <Image src={urlForImage(asset)} fill className="object-cover object-bottom h-full w-full" />
+            <Image src={urlForImage(asset)} fill className="object-cover md:object-bottom h-full w-full" />
         </div>
     )
 }

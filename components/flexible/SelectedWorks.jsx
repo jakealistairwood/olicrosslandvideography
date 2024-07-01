@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "framer-motion"
 import { urlForImage } from "@/sanity/lib/image";
+import CustomLink from "./CustomLink";
 
 import ProjectCard from "../elements/ProjectCard";
 
@@ -39,12 +40,20 @@ const FeaturedProject = ({ project }) => {
                 <span className="text-accent font-mono text-sm uppercase tracking-[0.24em] font-bold mb-5">{category?.category_name}</span>
                 <h3 className="font-heading uppercase font-light ~text-[1.5rem]/[2.5rem] text-white-80 tracking-[0.18em] leading-tight">{title}</h3>
                 <div className="pt-12 mt-auto">
-                    <Link href={`portfolio/${slug?.current}`} className="flex items-center cursor-pointer gap-4 border border-white/20 rounded-md w-fit py-[14px] px-8 uppercase text-xs sm:text-sm tracking-[0.15em]">
+                    {/* <Link href={`portfolio/${slug?.current}`} className="flex items-center cursor-pointer gap-4 border border-white/20 rounded-md w-fit py-[14px] px-8 uppercase text-xs sm:text-sm tracking-[0.15em]">
                         View case study
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.96191 11L10.4619 6.5L2.96191 2V11Z" fill="white"/>
                         </svg>
-                    </Link>
+                    </Link> */}
+                    <CustomLink 
+                        label="View Project" 
+                        url={`/portfolio/${slug.current}`} 
+                        include_icon
+                        icon_type="play"
+                        type="bordered"
+                        display_icon_by_default
+                    />
                 </div>
             </div>
         </div>
