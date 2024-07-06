@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import MobileMenuButton from "../elements/MobileMenuButton";
 
 const NavbarWrapper = ({ settings }) => {
@@ -129,7 +129,33 @@ const NavLink = ({ label, url }) => {
 const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen, options }) => {
     const { availableForProjects, link } = options;
 
+    const [hideOnScroll, setHideOnScroll] = useState(false);
+
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious();
+        if (latest > previous && latest > 200) {
+            setHideOnScroll(true);
+        } else {
+            setHideOnScroll(false);
+        }
+    })
+
     const hasLink = link?.url && link?.url.length > 0;
+
+    const hideOnScrollAnimation = {
+        initial: {
+            y: "0",
+        },
+        hidden: {
+            y: "-100%",
+            transition: {
+                duration: 0.3,
+                ease: "easeOut",
+            }
+        }
+    }
 
     const navbarAnimation = {
         initial: {
@@ -146,8 +172,13 @@ const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen, options }) =>
         }
     }
 
+    useEffect(() => {
+
+    }, []);
+
     return (
-        <motion.header variants={navbarAnimation} initial="initial" animate={scrolled && !mobileMenuOpen ? "animate" : "initial"} className="fixed top-0 left-0 w-full right-0 z-[999] py-4">
+        <motion.header variants={hideOnScrollAnimation} initial="initial" animate={hideOnScroll ? "hidden" : "initial"} className="fixed top-0 left-0 w-full right-0 z-[999]">
+            <motion.div className="py-4" variants={navbarAnimation} initial="initial" animate={scrolled && !mobileMenuOpen ? "animate" : "initial"}>
                 <div className="container flex items-center justify-between">
                     <nav className="flex items-center font-mono font-normal gap-x-12">
                         <Link href="/" className="relative aspect-[105/18] w-full">
@@ -181,6 +212,8 @@ const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen, options }) =>
                     </nav>
                     <MobileMenuButton menuOpen={mobileMenuOpen} setMenuOpen={setMobileMenuOpen} />
                 </div>
+
+            </motion.div>
             </motion.header>
     )
 }
