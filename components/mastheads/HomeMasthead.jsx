@@ -12,7 +12,7 @@ const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
     
     const isInView = useInView(headerRef, {
         amount: 0.2,
-        once: false,
+        once: true,
     });
 
     const animateText = {
@@ -51,20 +51,38 @@ const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
                 )}
             </header>
             {displayLogoMarquee && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
-                    <div className="container">
-                        <Marquee className="">
-                            {logoMarquee?.logos?.map((logo, i) => (
-                                <div key={`logo-marquee-item-${i}`} className="relative max-h-[48px] h-full w-auto">
-                                    <Image src={urlForImage(logo?.image?.asset)} className="object-contain w-full h-full" fill alt={logo?.image?.alt_text || ""} />
-                                </div>
-                            ))}
-                        </Marquee>
-                    </div>
-                </div>
+                <LogoMarquee logos={logoMarquee?.logos} heading={logoMarquee?.heading} />
             )}
         </div>
     )
 }
 
 export default HomeMasthead;
+
+const LogoMarquee = ({ logos, heading }) => {
+    const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
+    const hasHeading = heading && heading.length > 0;
+
+    return (
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[4] w-full">
+            <div className="container">
+                <div className="flex flex-col items-center text-center gap-y-10">
+                    {hasHeading && <p className="font-mono text-sm uppercase !tracking-[0.2em] text-white/80">{heading}</p>}
+                    <Marquee className="w-full flex gap-x-20">
+                        {duplicatedLogos?.map((logo, i) => (
+                            <div key={`logo-marquee-item-${i}`} className="relative h-full w-auto mr-20">
+                                <Image 
+                                    src={urlForImage(logo?.image?.asset)} 
+                                    className="object-contain w-full h-fullx" 
+                                    height={logo?.image?.asset?.metadata?.dimensions?.height} 
+                                    width={logo?.image?.asset?.metadata?.dimensions?.width}
+                                    alt={logo?.image?.alt_text || ""} 
+                                />
+                            </div>
+                        ))}
+                    </Marquee>
+                </div>
+            </div>
+        </div>
+    )
+}
