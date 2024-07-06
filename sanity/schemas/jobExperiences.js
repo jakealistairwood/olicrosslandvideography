@@ -38,25 +38,7 @@ export const jobExperiences = {
                         {
                             name: "date",
                             title: "Date",
-                            type: "object",
-                            fields: [
-                                {
-                                    name: "start_date",
-                                    title: "Start Date",
-                                    type: "date",
-                                },
-                                {
-                                    name: "to_present",
-                                    title: "To Present",
-                                    type: "boolean",
-                                },
-                                {
-                                    name: "end_date",
-                                    title: "End Date",
-                                    type: "date",
-                                    hidden: ({ parent }) => parent?.to_present,
-                                }
-                            ]
+                            type: "string",
                         },
                         {
                             name: "responsibilities",

@@ -33,6 +33,15 @@ const TimedTextImageSlider = ({ slider_items = [] }) => {
         return () => clearInterval(interval);
     }, [slider_items.length, activeSlide, isInView]);
 
+    const getImageFallback = (index) => {
+        for (let i = index; i >= 0; i--) {
+            if (slider_items[i]?.image?.asset) {
+                return slider_items[i].image.asset;
+            }
+        }
+        return null; // Fallback if no valid image is found
+    }
+
     return (
         <div id="timed-text-image-slider" className="flex flex-col gap-y-20 gap-x-[100px]" ref={containerRef}>
             <div className="flex-flex-col lg:max-w-[480px] w-full">
@@ -54,7 +63,8 @@ const TimedTextImageSlider = ({ slider_items = [] }) => {
                     {slider_items?.map((item, i) => (
                         <SwiperSlide key={`slider-item-${item?._key}`}>
                             <div className="relative w-full h-full">
-                                {item?.image?.asset && <Image className="w-full h-full" src={urlForImage(item?.image?.asset)} fill objectFit="cover" alt="" />}
+                                {/* {item?.image?.asset && <Image className="w-full h-full" src={urlForImage(item?.image?.asset)} fill objectFit="cover" alt="" />} */}
+                                {getImageFallback(i) && <Image className="w-full h-full" src={urlForImage(getImageFallback(i))} fill objectFit="cover" alt="" />}
                             </div>
                         </SwiperSlide>
                     ))}

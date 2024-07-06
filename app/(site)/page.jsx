@@ -4,6 +4,7 @@ import { fetchHomepageData } from "@/sanity/api";
 
 export default async function Home() {
   const data = await fetchHomepageData();
+  
   return (
     <main className="">
       <LayoutRenderer page={data} />

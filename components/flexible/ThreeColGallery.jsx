@@ -4,7 +4,7 @@ import { urlForImage } from "@/sanity/lib/image";
 
 const ThreeColGallery = ({ gallery }) => {
     return (
-        <div className="w-full flex gap-10 max-h-[440px] overflow-hidden">
+        <div className="w-full flex flex-col md:flex-row gap-10 md:max-h-[440px] overflow-hidden">
             {gallery?.map((image, i) => (
                 <GalleryImage key={`gallery-image-${image?._key}`} {...image} />
             ))}

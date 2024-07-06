@@ -6,7 +6,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import MobileMenuButton from "../elements/MobileMenuButton";
 
-const NavbarWrapper = () => {
+const NavbarWrapper = ({ settings }) => {
+    const { navbarOptions } = settings;
+
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -66,7 +68,7 @@ const NavbarWrapper = () => {
 
     return (
         <>
-            <DesktopNav scrolled={scrolled} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
+            <DesktopNav scrolled={scrolled} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} options={navbarOptions} />
             <motion.nav variants={mobileMenuAnimation} initial="initial" animate={mobileMenuOpen ? "animate" : "initial"} className="flex flex-col fixed rounded-xl top-0 right-0 left-0 w-full origin-top-right will-change-transform pt-[74px] pb-10 z-[998]">
                 <menu className="container">
                     <motion.li variants={mobileLinksAnimation} initial="initial" animate={mobileMenuOpen ? "animate" : "initial"} custom={0}>
@@ -124,7 +126,10 @@ const NavLink = ({ label, url }) => {
     )
 }
 
-const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen }) => {
+const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen, options }) => {
+    const { availableForProjects, link } = options;
+
+    const hasLink = link?.url && link?.url.length > 0;
 
     const navbarAnimation = {
         initial: {
@@ -164,15 +169,17 @@ const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen }) => {
                         </menu>
                     </nav>
                     <nav className="hidden lg:flex items-center gap-10">
-                        <div className="flex items-center gap-x-4 font-mono uppercase text-xs tracking-[0.1em] text-white-80">
-                            <motion.div 
-                                className="w-[10px] h-[10px] rounded-full bg-accent" 
-                                animate={{ opacity: [1, 0, 1] }} // Flashes by changing opacity
-                                transition={{ duration: 0.8, repeat: Infinity }} // Infinite loop with 1 second duration
-                            />
-                            <span>Available For Projects</span>
-                        </div>
-                        <NavCTABtn />
+                        {availableForProjects && (
+                            <div className="flex items-center gap-x-4 font-mono uppercase text-xs tracking-[0.1em] text-white-80">
+                                <motion.div 
+                                    className="w-[10px] h-[10px] rounded-full bg-accent" 
+                                    animate={{ opacity: [1, 0, 1] }} // Flashes by changing opacity
+                                    transition={{ duration: 0.8, repeat: Infinity }} // Infinite loop with 1 second duration
+                                />
+                                <span>Available For Projects</span>
+                            </div>
+                        )}
+                        {hasLink && <NavCTABtn {...link} />}
                     </nav>
                     <MobileMenuButton menuOpen={mobileMenuOpen} setMenuOpen={setMobileMenuOpen} />
                 </div>
@@ -181,7 +188,7 @@ const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen }) => {
 }
 
 
-const NavCTABtn = () => {
+const NavCTABtn = ({ label, url }) => {
     const [hovered, setHovered] = useState(false);
     const ctaMaskAnimation = {
         initial: {
@@ -211,14 +218,14 @@ const NavCTABtn = () => {
     return (
         <Link 
             className="flex items-center gap-2" 
-            href="/contact"
+            href={url}
             onMouseEnter={() => setHovered(true)} 
             onMouseLeave={() => setHovered(false)} 
             onFocus={() => setHovered(true)}
             onBlur={() => setHovered(false)}
         >
             <div className="flex items-center justify-center text-center rounded border border-[#4D4D4D] uppercase font-mono text-xs py-3 px-6 tracking-[0.10em] relative overflow-hidden">
-                <motion.span className="relative z-[2]" variants={ctaLabelAnimation} initial="initial" animate={hovered ? "animate" : "initial"}>Get in Touch</motion.span>
+                <motion.span className="relative z-[2]" variants={ctaLabelAnimation} initial="initial" animate={hovered ? "animate" : "initial"}>{label || "Get in touch"}</motion.span>
                 <motion.div className="absolute inset-0 w-full h-full bg-white rounded origin-bottom" variants={ctaMaskAnimation} iniital="initial" animate={hovered ? "animate" : "initial"} />
             </div>
             <div className="flex items-center justify-center rounded border border-[#4D4D4D] min-h-[42px] py-3 px-6 relative overflow-hidden">

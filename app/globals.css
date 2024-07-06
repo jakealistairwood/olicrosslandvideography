@@ -47,3 +47,7 @@ html, body {
     flex-direction: row !important;
   }
 }
+
+#job-experiences .job-experience .job-experience__responsibilities p {
+  @apply font-mono text-xs uppercase tracking-[0.07em];
+}

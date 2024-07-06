@@ -18,6 +18,11 @@ export const sectionOptions = defineType({
             initialValue: "black",
         },
         {
+            name: "id",
+            title: "ID",
+            type: "string",
+        },
+        {
             name: "remove_container",
             title: "Remove Container",
             type: "boolean",
