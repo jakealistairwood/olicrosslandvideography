@@ -97,7 +97,7 @@ const JobExperience = ({ company = {}, date = "", responsibilities = [], role = 
             )}
             {hasResponsiblities && (
                 <motion.div variants={accordionAnimation} initial="closed" animate={openExperience ? "open" : "closed"} className="flex flex-col">
-                    <div className="grid grid-cols-12 w-full">
+                    <div className="grid grid-cols-1 sm:grid-cols-12 w-full">
                         <div className="col-span-1 sm:col-span-3" />
                         <div className="col-span-1 sm:col-span-6 job-experience__responsibilities">
                             <PortableText value={responsibilities} />
