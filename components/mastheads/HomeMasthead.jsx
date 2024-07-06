@@ -108,7 +108,8 @@ const LogoMarquee = ({ logos, heading }) => {
                                         className="object-contain w-full h-full" 
                                         height={logo?.image?.asset?.metadata?.dimensions?.height} 
                                         width={logo?.image?.asset?.metadata?.dimensions?.width}
-                                        alt={logo?.image?.alt_text || ""} 
+                                        alt={logo?.image?.alt_text || ""}
+                                        loading="eager"
                                     />
                                 </div>
                             )
