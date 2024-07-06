@@ -4,7 +4,7 @@ const SectionHeader = ({ subheading = "", heading = "", options }) => {
     const { headingTextOptions, text_align, max_width } = options;
 
     const headingFontSize = {
-        "40": "text-[2.5rem]",
+        "40": "~text-[1.5rem]/[2.5rem]",
         // "80": "text-[5rem]",
         "80": "text-80",
     }

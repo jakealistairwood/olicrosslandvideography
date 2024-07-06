@@ -58,7 +58,7 @@ const JobExperience = ({ company = {}, date = "", responsibilities = [], role = 
         <div className="overflow-hidden font-mono group job-experience">
             {hasResponsiblities ? (
                 <button 
-                    className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 py-[30px] w-full text-left" 
+                    className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 first:pt-0 first:sm:pt-[30px] py-[30px] w-full text-left" 
                     type="button" 
                     onClick={() => setOpenExperience(!openExperience)}
                     onMouseEnter={() => setIsHovered(true)}
