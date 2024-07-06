@@ -150,12 +150,10 @@ const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen, options }) =>
         <motion.header variants={navbarAnimation} initial="initial" animate={scrolled && !mobileMenuOpen ? "animate" : "initial"} className="fixed top-0 left-0 w-full right-0 z-[999] py-4">
                 <div className="container flex items-center justify-between">
                     <nav className="flex items-center font-mono font-normal gap-x-12">
-                        <div className="relative aspect-[105/18] w-full">
+                        <Link href="/" className="relative aspect-[105/18] w-full">
                             {/* <Image src="/images/logo.svg" width={105} height={18} objectFit="contain" className="w-full max-w-[108px] mb-1" /> */}
-                            <strong className="uppercase font-mono font-normal text-sm tracking-[0.1em]">Oli Crossland</strong>
-
-
-                        </div>
+                            <span className="uppercase font-mono font-normal text-sm tracking-[0.1em]">Oli Crossland</span>
+                        </Link>
                         <menu className="hidden lg:flex items-center text-white-80 gap-10 uppercase text-xs tracking-[0.1em]">
                             <li>
                                 <NavLink label="Home" url="/" />

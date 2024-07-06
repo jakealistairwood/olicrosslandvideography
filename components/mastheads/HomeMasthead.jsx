@@ -12,7 +12,7 @@ const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
     
     const isInView = useInView(headerRef, {
         amount: 0.2,
-        once: false,
+        once: true,
     });
 
     const animateText = {
@@ -38,9 +38,9 @@ const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
     return (
         <div className="relative w-full min-h-screen">
             <Image className="z-[1] relative" src={urlForImage(image?.asset)} fill objectFit="cover" priority />
-            <header ref={headerRef} className="flex flex-col items-center text-center gap-y-4 relative z-[2] pt-[80px]">
+            <header ref={headerRef} className="flex flex-col items-center text-center gap-y-4 relative z-[2] pt-[80px] pointer-events-none">
                 {heading && heading?.length > 0 && (
-                    <h1 className="!font-heading text-[3.5rem] leading-[1.1] sm:~text-[4rem]/[10rem] uppercase tracking-[0.04em] text-white-80 overflow-hidden relative">
+                    <h1 className="!font-heading leading-[1.1] ~text-[3.5rem]/[8rem] sm:~text-[4rem]/[10rem] uppercase tracking-[0.04em] text-white-80 overflow-hidden relative">
                         <motion.span variants={animateText} initial="initial" custom={0} animate={isInView && domLoaded ? "animate" : "initial"} className="will-change-transform inline-block">{heading}</motion.span>
                     </h1>
                 )}
@@ -51,20 +51,71 @@ const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
                 )}
             </header>
             {displayLogoMarquee && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
-                    <div className="container">
-                        <Marquee className="">
-                            {logoMarquee?.logos?.map((logo, i) => (
-                                <div key={`logo-marquee-item-${i}`} className="relative max-h-[48px] h-full w-auto">
-                                    <Image src={urlForImage(logo?.image?.asset)} className="object-contain w-full h-full" fill alt={logo?.image?.alt_text || ""} />
-                                </div>
-                            ))}
-                        </Marquee>
-                    </div>
-                </div>
+                <LogoMarquee logos={logoMarquee?.logos} heading={logoMarquee?.heading} />
             )}
         </div>
     )
 }
 
 export default HomeMasthead;
+
+const LogoMarquee = ({ logos, heading }) => {
+    const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
+    const hasHeading = heading && heading.length > 0;
+
+    const gcd = (a, b) => {
+        return b ? gcd(b, a % b) : a;
+    }
+      
+    const numberToAspectRatio = (number, precision = 2) => {
+        // Convert number to a string to handle precision
+        let strNum = number.toFixed(precision);
+        
+        // Extract the integer and decimal parts
+        let [intPart, decPart] = strNum.split('.').map(Number);
+        
+        // If there is no decimal part, return the integer as the ratio
+        if (!decPart) {
+            return `${intPart}:1`;
+        }
+        
+        // Find the numerator and denominator
+        let numerator = intPart * Math.pow(10, precision) + decPart;
+        let denominator = Math.pow(10, precision);
+        
+        // Simplify the fraction
+        let divisor = gcd(numerator, denominator);
+        
+        // Return the simplified ratio
+        return `${numerator / divisor}/${denominator / divisor}`;
+    }
+
+    return (
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[4] w-full pointer-events-none">
+            <div className="container">
+                <div className="flex flex-col items-center text-center gap-y-10">
+                    {hasHeading && <p className="font-heading text-lg uppercase !tracking-[0.2em] text-white/80 font-light">{heading}</p>}
+                    <Marquee className="w-full flex gap-x-20">
+                        {duplicatedLogos?.map((logo, i) => {
+                            const aspectRatio = numberToAspectRatio(logo?.image?.asset?.metadata?.dimensions?.aspectRatio);
+
+                            console.log(aspectRatio);
+
+                            return (
+                                <div key={`logo-marquee-item-${i}`} className="relative h-full w-auto mr-20 min-h-[28px] max-h-[28px]" style={{ aspectRatio: aspectRatio }}>
+                                    <Image 
+                                        src={urlForImage(logo?.image?.asset)} 
+                                        className="object-contain w-full h-full" 
+                                        height={logo?.image?.asset?.metadata?.dimensions?.height} 
+                                        width={logo?.image?.asset?.metadata?.dimensions?.width}
+                                        alt={logo?.image?.alt_text || ""} 
+                                    />
+                                </div>
+                            )
+                        })}
+                    </Marquee>
+                </div>
+            </div>
+        </div>
+    )
+}
