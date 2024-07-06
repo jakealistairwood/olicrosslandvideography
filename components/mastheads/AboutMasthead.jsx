@@ -33,11 +33,11 @@ const AboutMasthead = ({
                 <h1 className="font-heading ~text-[5.5rem]/[7.875rem] uppercase tracking-[0.04em] leading-[1] text-ice font-medium pt-20 text-balance">{heading}</h1>
                 {include_contact_details && (
                     <div className="flex flex-col items-start gap-y-6 sm:flex-row sm:justify-between sm:items-center mt-10">
-                        <h4 className="uppercase font-heading text-normal text-accent tracking-[0.24em]">
+                        <h4 className="uppercase flex items-center flex-wrap font-heading text-normal text-accent tracking-[0.24em]">
                             <span className="text-[#535353] mr-4">Email Address</span>
                             {email_address}
                         </h4>
-                        <h4 className="uppercase font-heading text-normal text-accent tracking-[0.24em]">
+                        <h4 className="uppercase flex items-center flex-wrap font-heading text-normal text-accent tracking-[0.24em]">
                             <span className="text-[#535353] mr-4">Location</span>
                             {location}
                         </h4>
@@ -45,7 +45,7 @@ const AboutMasthead = ({
                 )}
                 {image?.asset && (
                     <div className="w-full relative">
-                        <motion.div variants={imageMaskAnimation} initial="initial" animate={domLoaded ? "animate" : "intiial"} className="absolute inset-0 z-[3] bg-black" style={{ transformOrigin: "bottom center" }} />
+                        <motion.div variants={imageMaskAnimation} initial="initial" animate={domLoaded ? "animate" : "initial"} className="absolute inset-0 z-[3] bg-black" style={{ transformOrigin: "bottom center" }} />
                         <MastheadAssetHandler asset={image} aspect_ratio={aspect_ratio} video_id={null} add_grayscale={add_grayscale} aboveTheFold />
                     </div>
                 )}
@@ -115,7 +115,7 @@ const AboutMeArticle = ({ header, content }) => {
     }
 
     return (
-        <article className="max-w-[780px] w-full ml-auto flex flex-col pb-[140px]">
+        <article className="max-w-[780px] w-full flex flex-col pb-[140px]">
             {header && header.length > 0 && (
                 <motion.header ref={headerRef} variants={fadeInAndUp} initial="initial" animate={headerInView ? "animate" : "initial"}>
                     <h3 className="~text-[1.5rem]/[2.5rem] tracking-[0.02em] font-light leading-[1.3] text-balance">{header}</h3>

@@ -16,6 +16,24 @@ export const fetchHomepageData = async () => {
                             ...,
                             category->
                         }
+                    },
+                    logoMarquee{
+                        logos[]{
+                            image{
+                                asset->{
+                                    _id,
+                                    url,
+                                    metadata {
+                                        dimensions {
+                                            width,
+                                            height
+                                        }
+                                    }
+                                },
+                                alt_text
+                            },
+                            link
+                        }
                     }
                 }
             }

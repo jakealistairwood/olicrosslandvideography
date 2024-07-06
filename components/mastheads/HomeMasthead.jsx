@@ -2,10 +2,13 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
 import { motion, useInView } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
-const HomeMasthead = ({ heading = "", tagline = "", image }) => {
+const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
     const [domLoaded, setDomLoaded] = useState(false);
     const headerRef = useRef(null);
+
+    const displayLogoMarquee = logoMarquee?.logos && logoMarquee?.logos.length > 0;
     
     const isInView = useInView(headerRef, {
         amount: 0.2,
@@ -47,6 +50,19 @@ const HomeMasthead = ({ heading = "", tagline = "", image }) => {
                     </h2>
                 )}
             </header>
+            {displayLogoMarquee && (
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+                    <div className="container">
+                        <Marquee className="">
+                            {logoMarquee?.logos?.map((logo, i) => (
+                                <div className="relative max-h-[48px] h-full w-auto">
+                                    <Image src={urlForImage(logo?.image?.asset)} className="object-contain w-full h-full" fill alt={logo?.image?.alt_text || ""} />
+                                </div>
+                            ))}
+                        </Marquee>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
