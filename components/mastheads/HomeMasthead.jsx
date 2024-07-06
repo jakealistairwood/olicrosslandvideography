@@ -55,7 +55,7 @@ const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
                     <div className="container">
                         <Marquee className="">
                             {logoMarquee?.logos?.map((logo, i) => (
-                                <div className="relative max-h-[48px] h-full w-auto">
+                                <div key={`logo-marquee-item-${i}`} className="relative max-h-[48px] h-full w-auto">
                                     <Image src={urlForImage(logo?.image?.asset)} className="object-contain w-full h-full" fill alt={logo?.image?.alt_text || ""} />
                                 </div>
                             ))}
