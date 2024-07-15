@@ -15,6 +15,8 @@ const FooterWrapper = ({ contactDetails, footerOptions }) => {
     const emailExists = email_address && email_address.length > 0;
     const mobileExists = mobile_number && mobile_number.length > 0;
 
+    const currentYear = new Date().getFullYear();
+
     const ctaMaskAnimation = {
         initial: {
             scaleY: 0,
@@ -87,8 +89,8 @@ const FooterWrapper = ({ contactDetails, footerOptions }) => {
                 </div>
             </div>
             <div className="flex flex-col items-start gap-y-4 sm:flex-row sm:items-center justify-between py-12">
-                <small className="uppercase font-heading text-xs tracking-[0.17em] opacity-50">&copy; Oli Crossland Videography 2024</small>
-                <small className="uppercase font-heading text-xs tracking-[0.17em] opacity-50">Site Design & Development By Jake Wood</small>
+                <small className="uppercase font-heading text-xs tracking-[0.17em] opacity-50">&copy; Oli Crossland Videography {currentYear}</small>
+                <small className="uppercase font-heading text-xs tracking-[0.17em] opacity-50">Site Design & Development By <Link className="underline underline-offset-2" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jake-wood-726141114/">Jake Wood</Link></small>
             </div>
         </>
     )

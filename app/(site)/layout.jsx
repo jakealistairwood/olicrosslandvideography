@@ -54,7 +54,7 @@ const commitMono = localFont({
 })
 
 export const metadata = {
-  title: "Oli Crossland | Art Direction & Creative Videography",
+  title: "Oli Crossland | Creative Videography & Production",
   description: "Welcome to the portfolio site of Oliver Crossland. A creative videographer specializing in video editing and photography with over 5 years of professional experience.",
 };
 
