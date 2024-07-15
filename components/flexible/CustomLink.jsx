@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { topLineAnimation, bottomLineAnimation } from "@/utils/animations";
 
 const CustomLink = ({ 
     type = "", 
@@ -35,24 +36,6 @@ const CustomLink = ({
     if (type === "button") {
         wrapperClasses.push("bg-[#262628] px-5 py-4 rounded-lg");
         labelClasses.push("font-medium text-sm");
-    }
-
-    const topLineAnimation = {
-        initial: {
-            y: "0%",
-        },
-        hovered: {
-            y: "-100%",
-        }
-    }
-
-    const bottomLineAnimation = {
-        initial: {
-            y: "100%",
-        },
-        hovered: {
-            y: "0%",
-        }
     }
 
     const iconAnimation = {

@@ -33,6 +33,7 @@ export const section = {
                                     { title: "Choose a component", value: "" },
                                     { title: "Home Masthead", value: "homeMasthead" },
                                     { title: "About Masthead", value: "aboutMasthead" },
+                                    { title: "Contact Masthead", value: "contactMasthead" },
                                     { title: "Section Header", value: "sectionHeader" },
                                     { title: "Custom Link", value: "customLink" },
                                     { title: "Logo Marquee", value: "logoMarquee" },
@@ -46,6 +47,7 @@ export const section = {
                                     { title: "Scrollable Text", value: "scrollableText" },
                                     { title: "Links Wrapper", value: "linksWrapper" },
                                     { title: "Three Col Gallery", value: "threeColGallery" },
+                                    { title: "Contact Form", value: "contactForm" },
                                 ]
                             },
                             initialValue: "",
@@ -61,6 +63,12 @@ export const section = {
                             type: "aboutMasthead",
                             title: "About Masthead",
                             hidden: ({ parent }) => parent.component!== "aboutMasthead",
+                        },
+                        {
+                            name: "contactMasthead",
+                            type: "contactMasthead",
+                            title: "Contact Masthead",
+                            hidden: ({ parent }) => parent.component!== "contactMasthead",
                         },
                         {
                             name: "sectionHeader",
@@ -139,6 +147,12 @@ export const section = {
                             type: "threeColGallery",
                             title: "Three Column Gallery",
                             hidden: ({ parent }) => parent.component!== "threeColGallery",
+                        },
+                        {
+                            name: "contactForm",
+                            type: "contactForm",
+                            title: "Contact Form",
+                            hidden: ({ parent }) => parent.component!== "contactForm",
                         }
                     ]
                 },

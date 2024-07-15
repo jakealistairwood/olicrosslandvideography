@@ -34,6 +34,18 @@ html, body {
   scroll-behavior: smooth;
 }
 
+.container {
+  @media screen and (min-width: 1024px) {
+    max-width: 1440px !important;
+  }
+}
+
+#available-for-projects {
+  @media screen and (max-width: 1128px) {
+    display: none !important;
+  }
+}
+
 .prose--dark {
   p {
     @apply text-white-80 ~text-[1rem]/[1.125rem] font-light leading-[1.6] tracking-[0.01em];
@@ -52,4 +64,43 @@ html, body {
 
 #job-experiences .job-experience .job-experience__responsibilities p {
   @apply font-mono text-xs uppercase tracking-[0.07em];
+}
+
+#contact-form {
+  @apply font-body;
+  input, textarea {
+    @apply bg-inherit text-3xl w-full text-white-80 pb-5;
+  }
+
+  input {
+    @apply border-b border-transparent;
+  }
+
+  textarea:active,
+  textarea:focus,
+  input:active,
+  input:focus {
+    outline: none;
+    @apply border-b border-white;
+  }
+
+  textarea.has-error:active,
+  textarea.has-error:focus,
+  input.has-error:active,
+  input.has-error:focus {
+    @apply border-b border-red-500;
+  }
+
+  textarea::placeholder,
+  input::placeholder {
+    @apply text-white opacity-30 font-light;
+  }
+}
+
+.form-control {
+  @apply flex flex-col gap-y-5 border-b border-[#383838] w-full;
+}
+
+.form-control--two-col {
+  @apply w-1/2;
 }

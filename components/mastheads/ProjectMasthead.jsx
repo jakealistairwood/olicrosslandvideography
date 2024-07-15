@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { textMaskAnimation } from "@/utils/animations";
 
 const AssetHandler = dynamic(() => import("@/components/elements/AssetHandler"));
 
@@ -43,8 +44,8 @@ const ProjectMasthead = ({ title, category, date, featured_image, video_id }) =>
 
     return (
         <header className="flex flex-col">
-            <h1 className="font-heading text-[3rem] sm:~text-[4rem]/[7.875rem] uppercase tracking-[0.04em] leading-[1] text-ice font-medium pt-20 text-balance max-w-[1280px]">{title}</h1>
-            <div className="flex flex-col gap-y-2 sm:gap-y-6 items-start sm:flex-row sm:justify-between sm:items-center mt-10">
+            <motion.h1 variants={textMaskAnimation(true)} initial="initial" animate={domLoaded ? "animate" : "initial"} className="font-heading text-[3rem] sm:~text-[4rem]/[7.875rem] uppercase tracking-[0.04em] leading-[1] text-ice font-medium pt-20 text-balance max-w-[1280px]">{title}</motion.h1>
+            <motion.div variants={textMaskAnimation(true)} initial="initial" animate={domLoaded ? "animate" : "initial"} className="flex flex-col gap-y-2 sm:gap-y-6 items-start sm:flex-row sm:justify-between sm:items-center mt-10">
                 <h4 className="flex flex-wrap uppercase font-heading ~text-[0.75rem]/[1rem] text-accent tracking-[0.24em]">
                     <span className="text-[#535353] mr-4">Category</span>
                     {category?.category_name}
@@ -53,7 +54,7 @@ const ProjectMasthead = ({ title, category, date, featured_image, video_id }) =>
                     <span className="text-[#535353] mr-4">Date</span>
                     {formattedDate}
                 </h4>
-            </div>
+            </motion.div>
             <div className="w-full relative">
                 <motion.div variants={assetAnimation} initial="initial" animate={domLoaded ? "animate" : "intiial"} className="absolute inset-0 z-[3] bg-black" style={{ transformOrigin: "bottom center" }} />
                 <ProjectAssetHandler asset={featured_image} video_id={video_id} title={`${title} video`} />

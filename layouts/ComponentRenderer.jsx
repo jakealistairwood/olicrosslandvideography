@@ -3,6 +3,8 @@ import dynamic from "next/dynamic";
 
 import HomeMasthead from "@/components/mastheads/HomeMasthead";
 import AboutMasthead from "@/components/mastheads/AboutMasthead";
+import ContactMasthead from "@/components/mastheads/ContactMasthead";
+
 const FullWidthAsset = dynamic(() => import("@/components/flexible/FullWidthAsset"));
 const TextImageMarquee = dynamic(() => import("@/components/marquees/TextImageMarquee"));
 const SectionHeader = dynamic(() => import("@/components/flexible/SectionHeader"));
@@ -15,6 +17,7 @@ const ThreeColGrid = dynamic(() => import("@/components/flexible/ThreeColGrid"))
 const ScrollableText = dynamic(() => import("@/components/flexible/ScrollableText"));
 const LinksWrapper = dynamic(() => import("@/components/flexible/LinksWrapper"));
 const ThreeColGallery = dynamic(() => import("@/components/flexible/ThreeColGallery"));
+const ContactForm = dynamic(() => import("@/components/flexible/ContactForm"));
 
 const ComponentRenderer = ({ components = [], contactDetails }) => {
 
@@ -23,6 +26,7 @@ const ComponentRenderer = ({ components = [], contactDetails }) => {
         const RenderedComponent = {
             homeMasthead: HomeMasthead,
             aboutMasthead: AboutMasthead,
+            contactMasthead: ContactMasthead,
             textImageMarquee: TextImageMarquee,
             sectionHeader: SectionHeader,
             customLink: CustomLink,
@@ -35,9 +39,10 @@ const ComponentRenderer = ({ components = [], contactDetails }) => {
             scrollableText: ScrollableText,
             linksWrapper: LinksWrapper,
             threeColGallery: ThreeColGallery,
+            contactForm: ContactForm,
         }[layoutName];
 
-        return RenderedComponent ? <RenderedComponent key={`${key}`} {...otherProps} contactDetails={layoutName === "aboutMasthead" ? contactDetails : null} /> : null;
+        return RenderedComponent ? <RenderedComponent key={`${key}`} {...otherProps} contactDetails={layoutName === "aboutMasthead" || layoutName === "contactMasthead" ? contactDetails : null} /> : null;
     }
 
     return (

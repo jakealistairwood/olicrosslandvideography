@@ -10,6 +10,7 @@ import { customLink } from "./schemas/customLink"
 import { fullWidthAsset } from "./schemas/fullWidthAsset"
 import { homeMasthead } from "./schemas/homeMasthead"
 import { aboutMasthead } from "./schemas/aboutMasthead"
+import { contactMasthead } from "./schemas/contactMasthead"
 import { sectionHeader } from "./schemas/sectionHeader"
 import { logoMarquee } from "./schemas/logoMarquee"
 import { textImageMarquee } from "./schemas/textImageMarquee"
@@ -21,6 +22,7 @@ import { threeColGrid } from "./schemas/threeColGrid"
 import { scrollableText } from "./schemas/scrollableText"
 import { linksWrapper } from "./schemas/linksWrapper"
 import { threeColGallery } from "./schemas/threeColGallery"
+import { contactForm } from "./schemas/contactForm"
 
 export const schema = {
   types: [
@@ -36,6 +38,7 @@ export const schema = {
     fullWidthAsset,
     homeMasthead,
     aboutMasthead,
+    contactMasthead,
     sectionHeader,
     logoMarquee,
     textImageMarquee,
@@ -47,5 +50,6 @@ export const schema = {
     scrollableText,
     linksWrapper,
     threeColGallery,
+    contactForm
   ],
 }

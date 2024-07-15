@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { textMaskAnimation } from "@/utils/animations";
 
 const SectionHeader = ({ subheading = "", heading = "", options }) => {
     const { headingTextOptions, text_align, max_width } = options;
@@ -31,10 +33,17 @@ const SectionHeader = ({ subheading = "", heading = "", options }) => {
     const fontWeight = headingFontWeights[headingTextOptions.font_weight];
     const trackingClass = getTrackingClass[headingTextOptions.letter_spacing];
 
+    const headingRef = useRef(null);
+
+    const headingInView = useInView(headingRef, {
+        amount: 0.2,
+        once: false,
+    })
+
     return (
-        <header className={`flex flex-col w-full ${getAligmentClasses[text_align]} gap-y-8`} style={{ maxWidth: `${max_width}px` || "unset" }}>
-            {subheading && subheading.length > 0 && <span className="font-heading text-carbon uppercase font-medium tracking-[0.24em] text-sm">{subheading}</span>}
-            {heading && heading.length > 0 && <h2 className={`uppercase font-heading leading-[1.1] ${fontSize} ${fontWeight} ${trackingClass}`}>{heading}</h2>}
+        <header ref={headingRef} className={`flex flex-col w-full ${getAligmentClasses[text_align]} gap-y-8`} style={{ maxWidth: `${max_width}px` || "unset" }}>
+            {subheading && subheading.length > 0 && <motion.span variants={textMaskAnimation(false)} initial="initial" animate={headingInView ? "animate" : "initial"} className="font-heading text-carbon uppercase font-medium tracking-[0.24em] text-sm">{subheading}</motion.span>}
+            {heading && heading.length > 0 && <motion.h2 variants={textMaskAnimation(false)} initial="initial" animate={headingInView ? "animate" : "initial"} className={`uppercase font-heading leading-[1.1] ${fontSize} ${fontWeight} ${trackingClass}`}>{heading}</motion.h2>}
         </header>
     )
 }

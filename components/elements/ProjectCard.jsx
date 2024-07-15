@@ -27,7 +27,7 @@ const ProjectCard = ({ slug, featured_image, category, title, index }) => {
     const fadeInProject = {
         initial: {
             opacity: 0,
-            y: 20,
+            y: 50,
             filter: "blur(20px)",
         },
         animate: {

@@ -118,6 +118,9 @@ const SiteLinksCol = () => {
                 <li>
                     <Link href="/portfolio" className="uppercase tracking-[0.04em] duration-300 ease transition-colors text-white-80 hover:text-white">Portfolio</Link>
                 </li>
+                <li>
+                    <Link href="/contact" className="uppercase tracking-[0.04em] duration-300 ease transition-colors text-white-80 hover:text-white">Contact</Link>
+                </li>
             </menu>
         </nav>
     )

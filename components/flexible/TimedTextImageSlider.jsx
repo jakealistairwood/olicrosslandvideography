@@ -7,6 +7,8 @@ import { EffectFade } from "swiper/modules";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
 
+import { textMaskAnimation } from "@/utils/animations";
+
 import "swiper/css";
 import "swiper/css/effect-fade";
 
@@ -78,6 +80,13 @@ export default TimedTextImageSlider;
 
 
 const SliderAccordionItem = ({ heading = "", description = "", index, isActiveSlide, setActiveSlide }) => {
+    const accordionRef = useRef(null);
+
+    const isInView = useInView(accordionRef, {
+        once: false,
+        amount: 0.2,
+    })
+
     const accordionAnimation = {
         initial: {
             height: 0,
@@ -107,9 +116,9 @@ const SliderAccordionItem = ({ heading = "", description = "", index, isActiveSl
         }
     }
     return (
-        <div className="">
+        <div ref={accordionRef} className="">
             <button className="py-10" onClick={() => setActiveSlide(index)}>
-                <h3 className="font-heading uppercase font-light tracking-[0.24em] text-2xl tracking-[1.26]">{heading}</h3>
+                <motion.h3 variants={textMaskAnimation} initial="initial" animate={isInView ? "animate" : "initial"} className="font-heading uppercase font-light tracking-[0.24em] text-2xl tracking-[1.26]">{heading}</motion.h3>
             </button>
             <motion.div variants={accordionAnimation} initial="initial" animate={isActiveSlide ? "animate" : "initial"} className="overflow-hidden">
                 <p className="text-white-80 font-body text-lg font-light tracking-[0.04em]">{description}</p>

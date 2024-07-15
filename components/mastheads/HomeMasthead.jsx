@@ -3,6 +3,7 @@ import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
 import { motion, useInView } from "framer-motion";
 import Marquee from "react-fast-marquee";
+import { imageMaskAnimation, textMaskAnimation } from "@/utils/animations";
 
 const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
     const [domLoaded, setDomLoaded] = useState(false);
@@ -36,20 +37,31 @@ const HomeMasthead = ({ heading = "", tagline = "", image, logoMarquee }) => {
     }, []);
 
     return (
-        <div className="relative w-full min-h-screen">
-            <Image className="z-[1] relative" src={urlForImage(image?.asset)} fill objectFit="cover" priority />
-            <header ref={headerRef} className="flex flex-col items-center text-center gap-y-4 relative z-[2] pt-[80px] pointer-events-none">
-                {heading && heading?.length > 0 && (
-                    <h1 className="!font-heading leading-[1.1] ~text-[3.5rem]/[8rem] sm:~text-[4rem]/[10rem] uppercase tracking-[0.04em] text-white-80 overflow-hidden relative">
-                        <motion.span variants={animateText} initial="initial" custom={0} animate={isInView && domLoaded ? "animate" : "initial"} className="will-change-transform inline-block">{heading}</motion.span>
-                    </h1>
-                )}
-                {tagline && tagline?.length > 0 && (
-                    <h2 className="!font-heading text-accent uppercase font-light tracking-[0.13em] text-[1.2rem] sm:~text-[1.5rem]/[2.5rem] -mt-[0.8em] overflow-hidden">
-                        <motion.span variants={animateText} initial="initial" custom={1} animate={isInView && domLoaded? "animate" : "initial"} className="will-change-transform inline-block">{tagline}</motion.span>
-                    </h2>
-                )}
-            </header>
+        <div className="relative w-full">
+            <div className="container">
+                <header ref={headerRef} className="flex flex-col items-center text-center gap-y-4 relative z-[2] pt-[80px] pointer-events-none">
+                    {heading && heading?.length > 0 && (
+                        <h1 className="!font-heading leading-[1.1] ~text-[3.5rem]/[8rem] sm:~text-[4rem]/[10rem] uppercase tracking-[0.04em] text-white-80 overflow-hidden relative">
+                            <motion.span variants={animateText} initial="initial" custom={0} animate={isInView && domLoaded ? "animate" : "initial"} className="will-change-transform inline-block">{heading}</motion.span>
+                        </h1>
+                    )}
+                    {tagline && tagline?.length > 0 && (
+                        <h2 className="!font-heading text-accent uppercase font-light tracking-[0.13em] text-[1.2rem] sm:~text-[1.5rem]/[2.5rem] -mt-[0.8em] overflow-hidden">
+                            <motion.span variants={animateText} initial="initial" custom={1} animate={isInView && domLoaded? "animate" : "initial"} className="will-change-transform inline-block">{tagline}</motion.span>
+                        </h2>
+                    )}
+                </header>
+                <div className="relative min-h-[50vh] lg:min-h-[unset] lg:aspect-[16/9] mt-12 overflow-hidden">
+                    <Image className="z-[1] relative" src={urlForImage(image?.asset)} fill objectFit="cover" priority />
+                    <motion.div 
+                        variants={imageMaskAnimation} 
+                        initial="initial" 
+                        animate={domLoaded ? "animate" : "initial"} 
+                        className="absolute inset-0 z-[3] bg-black" 
+                        style={{ transformOrigin: "bottom center" }} 
+                    />
+                </div>
+            </div>
             {displayLogoMarquee && (
                 <LogoMarquee logos={logoMarquee?.logos} heading={logoMarquee?.heading} />
             )}
@@ -91,7 +103,7 @@ const LogoMarquee = ({ logos, heading }) => {
     }
 
     return (
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[4] w-full pointer-events-none">
+        <div className="w-full pointer-events-none mt-20">
             <div className="container">
                 <div className="flex flex-col items-center text-center gap-y-10">
                     {hasHeading && <p className="font-heading text-lg uppercase !tracking-[0.2em] text-white/80 font-light">{heading}</p>}
