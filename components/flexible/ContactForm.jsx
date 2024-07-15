@@ -161,27 +161,29 @@ const ContactForm = ({ public_key, service_ID, template_id, confirmation_message
                 <label className="text-sm font-body" htmlFor="message">
                     Your message:
                 </label>
-                <textarea
-                    name="message"
-                    id="message"
-                    placeholder="Type your message here..."
-                    {...register("message", {
-                        required: "Message is required",
-                    })}
-                    className={`${errors.message ? "has-error" : ""}`}
-                />
-                {errors.message && (
-                    <div className="absolute right-0 top-2">
-                        <div className="relative">
-                            <button
-                                type="button"
-                                className="text-red-500 w-6 h-6 flex items-center justify-center"
-                            >
-                                <ErrorWarningIcon />
-                            </button>
+                <div className="relative">
+                    <textarea
+                        name="message"
+                        id="message"
+                        placeholder="Type your message here..."
+                        {...register("message", {
+                            required: "Message is required",
+                        })}
+                        className={`${errors.message ? "has-error" : ""}`}
+                    />
+                    {errors.message && (
+                        <div className="absolute right-0 top-2">
+                            <div className="relative">
+                                <button
+                                    type="button"
+                                    className="text-red-500 w-6 h-6 flex items-center justify-center"
+                                >
+                                    <ErrorWarningIcon />
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
             {/* <input type="submit" value="Send" /> */}
             <CustomButton

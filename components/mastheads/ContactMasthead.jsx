@@ -32,7 +32,7 @@ const ContactMasthead = ({ subheading = "", heading = "", description = "", cont
                         >
                             {heading}
                     </motion.h1>
-                    {hasDescription && <motion.p variants={textMaskAnimation(true)} initial="initial" animate={domLoaded ? "animate" : "initial"} className="text-white-80 font-body text-sm mt-4 max-w-[540px] w-full mx-auto">{description}</motion.p>}
+                    {hasDescription && <motion.p variants={textMaskAnimation(true)} initial="initial" animate={domLoaded ? "animate" : "initial"} className="text-white-80 !font-body !text-sm mt-4 max-w-[540px] w-full mx-auto">{description}</motion.p>}
                 </header>
                 <motion.div variants={formAnimation} initial="initial" animate={domLoaded ? "animate" : "initial"} className="form-wrapper max-w-[540px] w-full mx-auto mt-20 relative overflow-hidden">
                     <ContactForm {...contact_form} />
