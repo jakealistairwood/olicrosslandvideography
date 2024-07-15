@@ -67,14 +67,14 @@ const JobExperience = ({ company = {}, date = "", responsibilities = [], role = 
                     onBlur={() => setIsHovered(false)}
                 >
                     <div className="col-span-1 sm:col-span-3">
-                        {date && date.length > 0 && <p className="text-xs md:text-sm uppercase tracking-[0.07em] font-normal text-white/60">{date}</p>}
+                        {date && date.length > 0 && <p className="text-xs md:!text-sm uppercase tracking-[0.07em] font-normal text-white/60">{date}</p>}
                     </div>
                     <div className="col-span-1 sm:col-span-6">
-                        {role && role.length > 0 && <h3 className="text-xs md:text-sm uppercase tracking-[0.07em] font-normal">{role}</h3>}
+                        {role && role.length > 0 && <h3 className="text-xs md:!text-sm uppercase tracking-[0.07em] font-normal">{role}</h3>}
                     </div>
                     <div className="col-span-1 sm:col-span-3">
                         {company?.name && company?.name.length > 0 && (
-                            <div className="text-xs md:text-sm uppercase text-white/60 tracking-[0.07em] font-normal text-left sm:text-right">{company?.name}</div>
+                            <div className="text-xs md:!text-sm uppercase text-white/60 tracking-[0.07em] font-normal text-left sm:text-right">{company?.name}</div>
                         )}
                     </div>
                 </button>
@@ -83,14 +83,14 @@ const JobExperience = ({ company = {}, date = "", responsibilities = [], role = 
                     className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 py-[30px] w-full text-left"
                 >
                     <div className="col-span-1 sm:col-span-3">
-                        {date && date.length > 0 && <p className="text-xs md:text-sm uppercase tracking-[0.07em] font-normal text-white/60">{date}</p>}
+                        {date && date.length > 0 && <p className="text-xs md:!text-sm uppercase tracking-[0.07em] font-normal text-white/60">{date}</p>}
                     </div>
                     <div className="col-span-1 sm:col-span-6">
-                        {role && role.length > 0 && <h3 className="text-xs md:text-sm uppercase tracking-[0.07em] font-normal">{role}</h3>}
+                        {role && role.length > 0 && <h3 className="text-xs md:!text-sm uppercase tracking-[0.07em] font-normal">{role}</h3>}
                     </div>
                     <div className="col-span-1 sm:col-span-3">
                         {company?.name && company?.name.length > 0 && (
-                            <div className="text-xs md:text-sm uppercase text-white/60 tracking-[0.07em] font-normal text-left sm:text-right">{company?.name}</div>
+                            <div className="text-xs md:!text-sm uppercase text-white/60 tracking-[0.07em] font-normal text-left sm:text-right">{company?.name}</div>
                         )}
                     </div>
                 </div>

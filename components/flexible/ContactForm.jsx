@@ -254,7 +254,7 @@ const ConfirmationMessage = ({ heading, description, formSubmitted }) => {
     return (
         <motion.div variants={messageAnimation} initial="initial" animate={formSubmitted && isInView ? "animate" : "initial"} ref={ref} className="bg-white/10 flex flex-col justify-center items-center text-center p-8">
             <h2 className="uppercase font-heading text-3xl tracking-[0.18em]">{heading}</h2>
-            <p className="uppercase text-white-80 font-body text-sm mt-2">{description}</p>
+            <p className="uppercase text-white-80 font-body !text-sm mt-2">{description}</p>
         </motion.div>
     )
 }

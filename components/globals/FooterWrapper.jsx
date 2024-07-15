@@ -57,7 +57,7 @@ const FooterWrapper = ({ contactDetails, footerOptions }) => {
                                     onFocus={() => setHovered(true)} 
                                     onBlur={() => setHovered(false)}
                                 >
-                                    <div className="flex items-center justify-center text-center rounded border border-[#4D4D4D] uppercase font-mono text-sm py-4 px-6 tracking-[0.10em] relative overflow-hidden">
+                                    <div className="flex items-center justify-center text-center rounded border border-[#4D4D4D] uppercase font-mono !text-sm py-4 px-6 tracking-[0.10em] relative overflow-hidden">
                                         <motion.span className="relative z-[2]" variants={ctaLabelAnimation} initial="initial" animate={hovered ? "animate" : "initial"}>{cta?.button?.label}</motion.span>
                                         <motion.div className="absolute inset-0 w-full h-full bg-white rounded origin-bottom" variants={ctaMaskAnimation} iniital="initial" animate={hovered ? "animate" : "initial"} />
                                     </div>
