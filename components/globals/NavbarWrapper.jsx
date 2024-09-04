@@ -175,10 +175,6 @@ const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen, options }) =>
         }
     }
 
-    useEffect(() => {
-
-    }, []);
-
     return (
         <motion.header variants={hideOnScrollAnimation} initial="initial" animate={hideOnScroll ? "hidden" : "initial"} className="fixed top-0 left-0 w-full right-0 z-[999]">
             <motion.div className="py-4" variants={navbarAnimation} initial="initial" animate={scrolled && !mobileMenuOpen ? "animate" : "initial"}>

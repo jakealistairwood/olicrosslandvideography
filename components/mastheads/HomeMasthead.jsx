@@ -111,8 +111,6 @@ const LogoMarquee = ({ logos, heading }) => {
                         {duplicatedLogos?.map((logo, i) => {
                             const aspectRatio = numberToAspectRatio(logo?.image?.asset?.metadata?.dimensions?.aspectRatio);
 
-                            console.log(aspectRatio);
-
                             return (
                                 <div key={`logo-marquee-item-${i}`} className="relative h-full w-auto mr-20 min-h-[28px] max-h-[28px]" style={{ aspectRatio: aspectRatio }}>
                                     <Image 

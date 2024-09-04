@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const Introduction = ({ subheading = "", word_switcher= {} }) => {
     const { words_to_animate } = word_switcher;
-    console.log(words_to_animate);
 
     return (
         <div className="flex flex-col lg:flex-row gap-y-10 gap-x-[120px]">
