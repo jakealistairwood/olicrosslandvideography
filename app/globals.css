@@ -40,12 +40,6 @@ html, body {
   }
 }
 
-#available-for-projects {
-  @media screen and (max-width: 1128px) {
-    display: none !important;
-  }
-}
-
 .prose--dark {
   p {
     @apply text-white-80 ~text-[1rem]/[1.125rem] font-light leading-[1.6] tracking-[0.01em];
