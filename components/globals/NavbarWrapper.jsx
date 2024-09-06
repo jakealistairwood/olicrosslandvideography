@@ -201,7 +201,7 @@ const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen, options }) =>
                     </nav>
                     <nav className="hidden lg:flex items-center gap-10">
                         {availableForProjects && (
-                            <div id="available-for-projects" className="flex items-center gap-x-4 font-mono uppercase text-xs tracking-[0.1em] text-white-80">
+                            <div id="available-for-projects" className="lg:flex items-center gap-x-4 font-mono uppercase text-xs tracking-[0.1em] text-white-80">
                                 <motion.div 
                                     className="w-[10px] h-[10px] rounded-full bg-accent" 
                                     animate={{ opacity: [1, 0, 1] }} // Flashes by changing opacity
