@@ -1,6 +1,6 @@
 import { createClient } from "next-sanity";
-import groq from "next-sanity"
-import { client } from "../lib/client"
+import groq from "next-sanity";
+import { client } from "../lib/client";
 
 export const fetchHomepageData = async () => {
     const query = `
@@ -41,7 +41,7 @@ export const fetchHomepageData = async () => {
         }[0]
     `;
     return await client.fetch(query);
-}
+};
 
 export const fetchPageData = async (slug) => {
     const query = `
@@ -66,7 +66,7 @@ export const fetchPageData = async (slug) => {
     const params = { slug };
 
     return await client.fetch(query, params);
-}
+};
 
 export const fetchPortfolio = async () => {
     const query = `
@@ -77,17 +77,17 @@ export const fetchPortfolio = async () => {
     `;
 
     return await client.fetch(query);
-}
+};
 
 export const fetchCategories = async () => {
     const query = `
         *[_type == "projectCategories"]{
             ...
         }
-    `
+    `;
 
     return await client.fetch(query);
-}
+};
 
 export const fetchProjectData = async (slug) => {
     const query = `
@@ -96,22 +96,22 @@ export const fetchProjectData = async (slug) => {
             "slug": slug.current,
             category->
         }[0]
-    `
+    `;
 
     const params = { slug };
 
     return await client.fetch(query, params);
-}
+};
 
 export const fetchSiteSettings = async () => {
     const query = `
         *[_type == "siteSettings"]{
             ...,
         }[0]
-    `
+    `;
 
     return await client.fetch(query);
-}
+};
 
 export const fetchContactDetails = async () => {
     const query = `
@@ -122,7 +122,32 @@ export const fetchContactDetails = async () => {
                 email_address
             }
         }[0]
-    `
+    `;
 
     return await client.fetch(query);
-}
+};
+
+export const fetchPages = async () => {
+    const query = `
+        *[_type == "page"]{
+            _id,
+            "slug": slug.current,
+            title,
+            _updatedAt
+        }
+    `;
+
+    return await client.fetch(query);
+};
+
+export const fetchPortfolioPages = async () => {
+    const query = `
+        *[_type == "portfolio"]{
+            title,
+            "slug": slug.current,
+            _updatedAt
+        }
+    `;
+
+    return await client.fetch(query);
+};

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import LayoutRenderer from "@/layouts/LayoutRenderer";
 import { fetchHomepageData } from "@/sanity/api";
 
