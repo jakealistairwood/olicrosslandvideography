@@ -5,7 +5,7 @@ export default async function Home() {
   const data = await fetchHomepageData();
   
   return (
-    <main className="">
+    <main>
       <LayoutRenderer page={data} />
     </main>
   );

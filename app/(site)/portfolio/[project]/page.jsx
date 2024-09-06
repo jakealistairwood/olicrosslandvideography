@@ -8,7 +8,7 @@ export default async function Project({ params }) {
     const data = await fetchProjectData(project);
 
     return (
-        <main className="">
+        <main>
             <ProjectWrapper project={data} />
         </main>
     );

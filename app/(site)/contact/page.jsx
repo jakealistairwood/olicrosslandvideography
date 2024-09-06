@@ -7,7 +7,7 @@ export default async function Contact() {
   const contactDetails = await fetchContactDetails();
 
   return (
-    <main className="">
+    <main>
       <LayoutRenderer page={data} contactDetails={contactDetails} />
     </main>
   );
