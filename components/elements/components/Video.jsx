@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
-import YouTube from "react-youtube";
 
 const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) => {
     const [playVideo, setPlayVideo] = useState(false);
