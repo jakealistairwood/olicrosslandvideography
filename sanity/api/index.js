@@ -151,3 +151,31 @@ export const fetchPortfolioPages = async () => {
 
     return await client.fetch(query);
 };
+
+export const fetchPageSEOdata = async (slug) => {
+    const query = `
+        *[_type == "page" && slug.current == $slug]{
+            seoTitle,
+            seoDescription,
+            seoKeywords
+        }[0]
+    `;
+    const params = { slug };
+
+    return await client.fetch(query, params);
+};
+
+export const fetchProjectSEOData = async (slug) => {
+    const query = `
+        *[_type == "portfolio" && slug.current == $slug]{
+            title,
+            excerpt,
+            seoTitle,
+            seoDescription,
+            seoKeywords
+        }[0]
+    `;
+    const params = { slug };
+
+    return await client.fetch(query, params);
+};

@@ -5,6 +5,8 @@ import "../globals.css";
 import Navbar from "@/components/globals/Navbar";
 import Footer from "@/components/globals/Footer";
 
+import { fetchPageSEOdata } from "@/sanity/api";
+
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-body" });
 const hubotSansCondensed = localFont({
   src: [
@@ -53,10 +55,20 @@ const commitMono = localFont({
   variable: "--font-commit-mono",
 })
 
-export const metadata = {
-  title: "Oli Crossland | Creative Videography & Production",
-  description: "Welcome to the portfolio site of Oliver Crossland. A creative videographer specializing in video editing and photography with over 5 years of professional experience.",
-};
+// export const metadata = {
+//   title: "Oli Crossland | Creative Videography & Production",
+//   description: "Welcome to the portfolio site of Oliver Crossland. A creative videographer specializing in video editing and photography with over 5 years of professional experience.",
+// };
+
+export async function generateMetadata({ params }) {
+  const seoData = await fetchPageSEOdata("/")
+
+  return {
+    title: seoData?.seoTitle,
+    description: seoData?.seoDescription,
+    keywords: seoData?.seoKeywords,
+  }
+}
 
 export default function RootLayout({ children }) {
   return (

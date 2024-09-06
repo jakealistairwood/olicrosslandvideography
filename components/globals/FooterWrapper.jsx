@@ -100,7 +100,7 @@ export default FooterWrapper;
 
 const SocialLink = ({ icon, name, url }) => {
     return (
-        <Link className="w-6 h-6 flex items-center justify-center relative" href={url || ""}>
+        <Link className="w-6 h-6 flex items-center justify-center relative" href={url || ""} aria-label={`Link to ${name}`}>
             {icon?.asset && <Image src={urlForImage(icon?.asset)} fill alt={name ? `${name} logo` : ""} className="h-full w-full object-contain" />}
         </Link>
     )
