@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
+import YouTube from "react-youtube";
 
 const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) => {
     const [playVideo, setPlayVideo] = useState(false);
@@ -47,7 +48,7 @@ const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) 
                     setPlayVideo(true);
                     handleYoutubeEmbed(embedRef);
                 }}>
-                    <Image className="w-full h-full" src={urlForImage(thumbnail?.asset)} fill alt="" />
+                    <Image className="w-full h-full object-cover" src={urlForImage(thumbnail?.asset)} fill alt="" />
                     <div className="absolute z-[10] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-full bg-white/[12%] backdrop-blur-lg flex items-center justify-center">
                         <svg
                         className="w-[15px] h-[25px] md:w-[28px] md:h-[33px]"
