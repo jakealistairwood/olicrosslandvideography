@@ -130,7 +130,7 @@ const NavLink = ({ label, url }) => {
 }
 
 const DesktopNav = ({ scrolled, mobileMenuOpen, setMobileMenuOpen, options }) => {
-    const { availableForProjects, link } = options;
+    const { availableForProjects = false, link } = options;
 
     const [hideOnScroll, setHideOnScroll] = useState(false);
 
