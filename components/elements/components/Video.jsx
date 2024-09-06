@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
+import ReactPlayer from "react-player/youtube";
 
 const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) => {
     const [playVideo, setPlayVideo] = useState(false);
@@ -21,31 +22,31 @@ const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) 
         }
     }
 
-    useEffect(() => {
-        const youtubeAPIScript = document.createElement("script");
-        youtubeAPIScript.src = "https://www.youtube.com/iframe_api";
+    // useEffect(() => {
+    //     const youtubeAPIScript = document.createElement("script");
+    //     youtubeAPIScript.src = "https://www.youtube.com/iframe_api";
 
-        const firstScriptTag = document.getElementsByTagName("script")[0];
-        firstScriptTag.parentNode.insertBefore(youtubeAPIScript, firstScriptTag);
-    }, []);
+    //     const firstScriptTag = document.getElementsByTagName("script")[0];
+    //     firstScriptTag.parentNode.insertBefore(youtubeAPIScript, firstScriptTag);
+    // }, []);
 
-    const handleYoutubeEmbed = (ref) => {
-        if (ref.current) {
-            const youtubeEmbed = ref.current;
-            const message = {
-                event: "command",
-                func: "playVideo",
-            }
-            youtubeEmbed.contentWindow.postMessage(JSON.stringify(message), "*");
-        }
-    }
+    // const handleYoutubeEmbed = (ref) => {
+    //     if (ref.current) {
+    //         const youtubeEmbed = ref.current;
+    //         const message = {
+    //             event: "command",
+    //             func: "playVideo",
+    //         }
+    //         youtubeEmbed.contentWindow.postMessage(JSON.stringify(message), "*");
+    //     }
+    // }
 
     return (
         <div style={{ paddingTop: "56.25%", position: "relative" }}>
             {add_thumbnail && thumbnail?.asset && (
                 <motion.button type="button" aria-label="Play Video" variants={fadeOutThumbnail} initial="initial" animate={playVideo ? "hidden" : "initial"} className="absolute inset-0 z-[2]" onClick={() => {
                     setPlayVideo(true);
-                    handleYoutubeEmbed(embedRef);
+                    // handleYoutubeEmbed(embedRef);
                 }}>
                     <Image className="w-full h-full object-cover" src={urlForImage(thumbnail?.asset)} fill alt="" />
                     <div className="absolute z-[10] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-full bg-white/[12%] backdrop-blur-lg flex items-center justify-center">
@@ -65,7 +66,23 @@ const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) 
                     </div>      
                 </motion.button>
             )}
-            <iframe 
+            <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${video_id}`}
+                playsinline
+                className="absolute inset-0 h-full w-full"
+                playing={playVideo}
+                controls={false}
+                ref={embedRef}
+                width="100%"
+                height="100%"
+                config={{
+                    youtube: {
+                        playerVars: { showinfo: 0, controls: 1 }
+                    }
+                }}
+                onEnded={() => setPlayVideo(false)}
+            />
+            {/* <iframe 
                 className="absolute inset-0 w-full h-full"
                 src={`https://www.youtube.com/embed/${video_id}?autoplay=1?autohide=1&enablejsapi=1`}
                 title={title || ""}
@@ -74,7 +91,7 @@ const Video = ({ add_thumbnail = false, thumbnail, title = "", video_id = "" }) 
                 width="100%"
                 height="100%"
                 ref={embedRef}
-            />
+            /> */}
         </div>
     )
 }
